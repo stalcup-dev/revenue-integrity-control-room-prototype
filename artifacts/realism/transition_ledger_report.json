@@ -1,0 +1,175 @@
+{
+  "overall_status": "pass",
+  "summary_counts": {
+    "pass": 4,
+    "warn": 0,
+    "fail": 0
+  },
+  "dimensions": {
+    "transition_ledger_realism": {
+      "status": "pass",
+      "metrics": {
+        "queue_history_row_count": 50,
+        "exception_queue_row_count": 24,
+        "transition_event_density": 2.0833,
+        "multi_event_case_count": 14,
+        "distinct_transition_pair_count": 5,
+        "routing_reason_coverage": 1.0,
+        "days_in_prior_queue_summary": {
+          "min": 0.0,
+          "median": 1.0,
+          "max": 3.0,
+          "nunique": 4
+        }
+      },
+      "anti_pattern_flags": []
+    },
+    "handoff_churn_realism": {
+      "status": "pass",
+      "metrics": {
+        "reroute_bucket_distribution": {
+          "0": 10,
+          "1": 6,
+          "2": 4,
+          "3+": 4
+        },
+        "department_reroute_mean": {
+          "OR / Hospital Outpatient Surgery / Procedural Areas": 2.0,
+          "Outpatient Infusion / Oncology Infusion": 0.7273,
+          "Radiology / Interventional Radiology": 0.4
+        },
+        "service_line_reroute_mean": {
+          "Infusion": 0.7273,
+          "Interventional Radiology": 0.0,
+          "Outpatient Surgery": 2.0,
+          "Radiology": 0.5
+        },
+        "top_transition_pairs": {
+          "Documentation Support Exceptions -> Coding Pending Review": 8,
+          "Coding Pending Review -> Modifiers / Edits / Prebill Holds": 8,
+          "Charge Reconciliation Monitor -> Documentation Support Exceptions": 4,
+          "Charge Reconciliation Monitor -> Coding Pending Review": 4,
+          "Modifiers / Edits / Prebill Holds -> Correction / Rebill Pending": 2
+        }
+      },
+      "anti_pattern_flags": []
+    },
+    "intervention_followthrough_realism": {
+      "status": "pass",
+      "metrics": {
+        "checkpoint_distribution": {
+          "Monitor next checkpoint": 9,
+          "Pilot checkpoint complete": 6,
+          "Baseline captured": 5,
+          "Checkpoint overdue": 2,
+          "Turnaround improving": 2
+        },
+        "recommendation_distribution": {
+          "Hold": 12,
+          "Revise": 6,
+          "Expand": 6
+        },
+        "metric_delta_summary": {
+          "nonzero_count": 20,
+          "positive_count": 18,
+          "median_delta": 0.65,
+          "max_delta": 2.2
+        },
+        "correction_turnaround_row_count": 8,
+        "owner_context_match_rate": 1.0,
+        "recurring_pattern_coverage": 1.0
+      },
+      "anti_pattern_flags": []
+    },
+    "transition_intervention_antipatterns": {
+      "status": "pass",
+      "metrics": {
+        "transition_event_density": 2.0833,
+        "generic_routing_reason_rate": 0.02,
+        "owner_context_match_rate": 1.0,
+        "recommendation_distribution": {
+          "Hold": 12,
+          "Revise": 6,
+          "Expand": 6
+        },
+        "department_reroute_mean": {
+          "OR / Hospital Outpatient Surgery / Procedural Areas": 2.0,
+          "Outpatient Infusion / Oncology Infusion": 0.7273,
+          "Radiology / Interventional Radiology": 0.4
+        }
+      },
+      "anti_pattern_flags": []
+    }
+  },
+  "anti_pattern_flags": [],
+  "what_still_feels_fake": [],
+  "transition_ledger_snapshot": {
+    "queue_history_row_count": 50,
+    "exception_queue_row_count": 24,
+    "latest_history_row_count": 24,
+    "transition_event_density": 2.0833,
+    "multi_event_case_count": 14,
+    "reroute_bucket_distribution": {
+      "0": 10,
+      "1": 6,
+      "2": 4,
+      "3+": 4
+    },
+    "distinct_transition_pair_count": 5,
+    "top_transition_pairs": {
+      "Documentation Support Exceptions -> Coding Pending Review": 8,
+      "Coding Pending Review -> Modifiers / Edits / Prebill Holds": 8,
+      "Charge Reconciliation Monitor -> Documentation Support Exceptions": 4,
+      "Charge Reconciliation Monitor -> Coding Pending Review": 4,
+      "Modifiers / Edits / Prebill Holds -> Correction / Rebill Pending": 2
+    },
+    "routing_reason_coverage": 1.0,
+    "generic_routing_reason_rate": 0.02,
+    "top_routing_reasons": {
+      "Timed infusion cannot clear until stop time support is completed.": 2,
+      "Documented waste is waiting on charge-entry follow-through before bill drop.": 2,
+      "Charge reconciliation flagged missing waste support before bill drop.": 2,
+      "Department follow-through could not validate waste support after revenue-integrity handoff.": 2,
+      "Resolved waste support rerouted into coding review for modifier alignment.": 2,
+      "Residual waste-support risk remained after coding review and moved into prebill hold.": 2
+    },
+    "days_in_prior_queue_summary": {
+      "min": 0.0,
+      "median": 1.0,
+      "max": 3.0,
+      "nunique": 4
+    },
+    "department_reroute_mean": {
+      "OR / Hospital Outpatient Surgery / Procedural Areas": 2.0,
+      "Outpatient Infusion / Oncology Infusion": 0.7273,
+      "Radiology / Interventional Radiology": 0.4
+    },
+    "service_line_reroute_mean": {
+      "Infusion": 0.7273,
+      "Interventional Radiology": 0.0,
+      "Outpatient Surgery": 2.0,
+      "Radiology": 0.5
+    },
+    "checkpoint_distribution": {
+      "Monitor next checkpoint": 9,
+      "Pilot checkpoint complete": 6,
+      "Baseline captured": 5,
+      "Checkpoint overdue": 2,
+      "Turnaround improving": 2
+    },
+    "recommendation_distribution": {
+      "Hold": 12,
+      "Revise": 6,
+      "Expand": 6
+    },
+    "metric_delta_summary": {
+      "nonzero_count": 20,
+      "positive_count": 18,
+      "median_delta": 0.65,
+      "max_delta": 2.2
+    },
+    "correction_turnaround_row_count": 8,
+    "owner_context_match_rate": 1.0,
+    "recurring_pattern_coverage": 1.0
+  }
+}

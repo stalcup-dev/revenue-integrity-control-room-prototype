@@ -1,0 +1,251 @@
+{
+  "overall_status": "pass",
+  "summary_counts": {
+    "pass": 4,
+    "warn": 0,
+    "fail": 0
+  },
+  "dimensions": {
+    "infusion_story_realism": {
+      "status": "pass",
+      "metrics": {
+        "encounter_count": 21,
+        "start_stop_dependency_case_count": 20,
+        "start_stop_dependency_rate": 0.9524,
+        "sequence_non_primary_case_count": 4,
+        "hydration_conditional_case_count": 2,
+        "waste_support_case_count": 4,
+        "access_site_case_count": 2,
+        "documentation_gap_counts": {
+          "<blank>": 15,
+          "missing_stop_time": 4,
+          "undocumented_waste": 2
+        },
+        "clinical_event_counts": {
+          "Timed infusion unit-conversion review": 20,
+          "Drug waste scenario": 6,
+          "Initial therapeutic infusion": 3,
+          "Hydration infusion distinct from therapy": 2,
+          "Separate access-site administration": 2
+        }
+      },
+      "anti_pattern_flags": []
+    },
+    "radiology_story_realism": {
+      "status": "pass",
+      "metrics": {
+        "encounter_count": 20,
+        "completed_study_case_count": 16,
+        "incomplete_study_case_count": 4,
+        "laterality_site_case_count": 4,
+        "distinctness_case_count": 2,
+        "contrast_device_case_count": 6,
+        "unsupported_case_count": 6,
+        "documentation_gap_counts": {
+          "<blank>": 12,
+          "incomplete_study": 4,
+          "missing_device_linkage": 2,
+          "missing_laterality": 2
+        },
+        "clinical_event_counts": {
+          "Completed diagnostic imaging study": 12,
+          "Interventional device or contrast linkage": 6,
+          "Incomplete or discontinued imaging study": 4,
+          "Laterality/site-dependent imaging study": 4,
+          "Distinct same-day imaging study": 2
+        }
+      },
+      "anti_pattern_flags": []
+    },
+    "or_procedural_story_realism": {
+      "status": "pass",
+      "metrics": {
+        "encounter_count": 21,
+        "discontinued_case_count": 4,
+        "implant_supply_case_count": 12,
+        "timestamp_gap_case_count": 2,
+        "late_post_risk_case_count": 5,
+        "postbill_recoverable_case_count": 2,
+        "correction_history_case_count": 2,
+        "mean_reroute_count_by_department": {
+          "or_procedural": 1.0833,
+          "infusion": 0.7368,
+          "radiology_ir": 0.2857
+        },
+        "clinical_event_counts": {
+          "Completed outpatient procedure": 15,
+          "Implant or supply capture": 12,
+          "Discontinued procedure": 4,
+          "Timestamp-dependent procedural support": 2
+        }
+      },
+      "anti_pattern_flags": []
+    },
+    "department_story_antipatterns": {
+      "status": "pass",
+      "metrics": {
+        "documented_performed_support_rate": 1.0,
+        "department_documentation_gap_signatures": {
+          "infusion": [
+            "missing_stop_time",
+            "undocumented_waste"
+          ],
+          "radiology_ir": [
+            "incomplete_study",
+            "missing_device_linkage",
+            "missing_laterality"
+          ],
+          "or_procedural": [
+            "missing_case_timestamp",
+            "missing_implant_linkage"
+          ]
+        },
+        "modifier_case_event_map": {
+          "infusion": {
+            "Timed infusion unit-conversion review": 4,
+            "Drug waste scenario": 2,
+            "Initial therapeutic infusion": 2
+          },
+          "radiology_ir": {
+            "Distinct same-day imaging study": 2
+          }
+        },
+        "invalid_modifier_case_count": 0,
+        "failure_category_dominance": {
+          "recoverable_missed_charge": {
+            "department": "Outpatient Infusion / Oncology Infusion",
+            "share": 0.6
+          },
+          "unsupported_charge_risk": {
+            "department": "Outpatient Infusion / Oncology Infusion",
+            "share": 0.3529
+          },
+          "packaged_or_nonbillable_suppressed": {
+            "department": "OR / Hospital Outpatient Surgery / Procedural Areas",
+            "share": 0.4
+          },
+          "modifier_dependency_case": {
+            "department": "Outpatient Infusion / Oncology Infusion",
+            "share": 0.8
+          }
+        },
+        "top_failure_status_by_department": {
+          "infusion": "modifier_dependency_case",
+          "radiology_ir": "unsupported_charge_risk",
+          "or_procedural": "packaged_or_nonbillable_suppressed"
+        },
+        "top_clinical_event_by_department": {
+          "infusion": "Timed infusion unit-conversion review",
+          "or_procedural": "Completed outpatient procedure",
+          "radiology_ir": "Completed diagnostic imaging study"
+        }
+      },
+      "anti_pattern_flags": []
+    }
+  },
+  "anti_pattern_flags": [],
+  "what_still_feels_fake": [],
+  "department_scenario_counts": {
+    "infusion": {
+      "start_stop_dependency_count": 32,
+      "sequence_non_primary_count": 4,
+      "hydration_conditional_count": 2,
+      "waste_case_count": 4,
+      "access_site_case_count": 2,
+      "documentation_gap_counts": {
+        "<blank>": 27,
+        "missing_stop_time": 4,
+        "undocumented_waste": 2
+      }
+    },
+    "radiology_ir": {
+      "completed_study_count": 24,
+      "incomplete_study_count": 4,
+      "laterality_site_count": 4,
+      "distinctness_case_count": 2,
+      "contrast_device_count": 6,
+      "unsupported_count": 6
+    },
+    "or_procedural": {
+      "discontinued_case_count": 4,
+      "implant_supply_count": 12,
+      "timestamp_gap_count": 2,
+      "late_post_risk_count": 5,
+      "postbill_recoverable_queue_count": 2,
+      "correction_history_count": 2
+    }
+  },
+  "department_failure_mode_mix": {
+    "infusion": {
+      "department_label": "Infusion / Oncology Infusion",
+      "opportunity_status_counts": {
+        "expected_charge_supported": 8,
+        "modifier_dependency_case": 8,
+        "unsupported_charge_risk": 6,
+        "recoverable_missed_charge": 6,
+        "packaged_or_nonbillable_suppressed": 5
+      },
+      "clinical_event_counts": {
+        "Timed infusion unit-conversion review": 20,
+        "Drug waste scenario": 6,
+        "Initial therapeutic infusion": 3,
+        "Hydration infusion distinct from therapy": 2,
+        "Separate access-site administration": 2
+      },
+      "documentation_gap_counts": {
+        "<blank>": 15,
+        "missing_stop_time": 4,
+        "undocumented_waste": 2
+      }
+    },
+    "radiology_ir": {
+      "department_label": "Radiology / Interventional Radiology",
+      "opportunity_status_counts": {
+        "expected_charge_supported": 14,
+        "unsupported_charge_risk": 6,
+        "packaged_or_nonbillable_suppressed": 4,
+        "modifier_dependency_case": 2,
+        "recoverable_missed_charge": 2
+      },
+      "clinical_event_counts": {
+        "Completed diagnostic imaging study": 12,
+        "Interventional device or contrast linkage": 6,
+        "Incomplete or discontinued imaging study": 4,
+        "Laterality/site-dependent imaging study": 4,
+        "Distinct same-day imaging study": 2
+      },
+      "documentation_gap_counts": {
+        "<blank>": 12,
+        "incomplete_study": 4,
+        "missing_device_linkage": 2,
+        "missing_laterality": 2
+      }
+    },
+    "or_procedural": {
+      "department_label": "OR / Procedural",
+      "opportunity_status_counts": {
+        "expected_charge_supported": 20,
+        "packaged_or_nonbillable_suppressed": 6,
+        "unsupported_charge_risk": 5,
+        "recoverable_missed_charge": 2
+      },
+      "clinical_event_counts": {
+        "Completed outpatient procedure": 15,
+        "Implant or supply capture": 12,
+        "Discontinued procedure": 4,
+        "Timestamp-dependent procedural support": 2
+      },
+      "documentation_gap_counts": {
+        "<blank>": 16,
+        "missing_implant_linkage": 3,
+        "missing_case_timestamp": 2
+      }
+    }
+  },
+  "what_still_feels_fake_by_department": {
+    "infusion": [],
+    "radiology_ir": [],
+    "or_procedural": [],
+    "cross_department": []
+  }
+}

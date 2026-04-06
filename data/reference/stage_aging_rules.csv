@@ -1,0 +1,11 @@
+stage_name,aging_basis,clock_start_event,sla_target_days,overdue_threshold_days,aging_bucket_rule_note
+Open encounter,Days since encounter opened,Encounter opened,1,2,Within SLA <= 1 day; At risk 2 days; Overdue > 2 days.
+Charge capture pending,Days since service completion for charge capture follow-up,Service completion or documented performed activity,2,4,Within SLA <= 2 days; At risk 3-4 days; Overdue > 4 days.
+Documentation pending,Days since documentation deficiency was identified,Documentation deficiency identified,2,3,Within SLA <= 2 days; At risk 3 days; Overdue > 3 days.
+Coding pending,Days since coding review stage entry,Coding review start,2,3,Within SLA <= 2 days; At risk 3 days; Overdue > 3 days.
+Prebill edit / hold,Days since edit or prebill hold opened,Edit or hold opened,2,5,Within SLA <= 2 days; At risk 3-5 days; Overdue > 5 days.
+Ready to final bill,Days since release to final bill,All blocking issues resolved,1,2,Within SLA <= 1 day; At risk 2 days; Overdue > 2 days.
+Final billed,Days since final bill timestamp,Final bill timestamp,0,0,No active queue aging after final bill unless a correction or rebill opens.
+Correction / rebill pending,Days since correction or rebill opened,Correction or rebill opened,5,10,Within SLA <= 5 days; At risk 6-10 days; Overdue > 10 days.
+Closed / monitored through denial feedback only,Days since monitoring-only closure,Workflow closed and monitoring only,0,0,Monitoring-only stage with no active queue SLA clock.
+denial_feedback_backlog,Days since denial feedback entered backlog,Denial feedback received,7,14,Within SLA <= 7 days; At risk 8-14 days; Overdue > 14 days.

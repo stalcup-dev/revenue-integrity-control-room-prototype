@@ -1,0 +1,66 @@
+{
+  "artifact_row_counts": {
+    "encounters": 30,
+    "claims_or_account_status": 30,
+    "charge_events": 39,
+    "claim_lines": 32,
+    "expected_charge_opportunities": 45,
+    "exception_queue": 12,
+    "queue_history": 12,
+    "priority_scores": 12,
+    "corrections_rebills": 2,
+    "denials_feedback": 0
+  },
+  "department_queue_mix": {
+    "OR / Hospital Outpatient Surgery / Procedural Areas": {
+      "Modifiers / Edits / Prebill Holds": 2,
+      "Correction / Rebill Pending": 1,
+      "Documentation Support Exceptions": 1
+    },
+    "Outpatient Infusion / Oncology Infusion": {
+      "Charge Reconciliation Monitor": 2,
+      "Coding Pending Review": 1,
+      "Documentation Support Exceptions": 1,
+      "Modifiers / Edits / Prebill Holds": 1
+    },
+    "Radiology / Interventional Radiology": {
+      "Documentation Support Exceptions": 2,
+      "Coding Pending Review": 1
+    }
+  },
+  "reroute_distribution": {
+    "0": 7,
+    "1": 2,
+    "2": 2,
+    "3": 1
+  },
+  "repeat_exception_rate_by_department": {
+    "OR / Hospital Outpatient Surgery / Procedural Areas": 0.75,
+    "Outpatient Infusion / Oncology Infusion": 0.2,
+    "Radiology / Interventional Radiology": 0.3333
+  },
+  "repeat_root_cause_clusters_by_department": {
+    "OR / Hospital Outpatient Surgery / Procedural Areas": {
+      "Workflow / handoff": 2,
+      "Billing edit management": 1,
+      "Documentation behavior": 1
+    },
+    "Outpatient Infusion / Oncology Infusion": {
+      "Coding practice": 2,
+      "Documentation behavior": 2,
+      "Workflow / handoff": 1
+    },
+    "Radiology / Interventional Radiology": {
+      "Documentation behavior": 2,
+      "Coding practice": 1
+    }
+  },
+  "closed_compliance_count": 1,
+  "closed_compliance_queue_count": 0,
+  "payable_signal_counts": {
+    "denials_feedback_rows": 0,
+    "upstream_linked_rows": 0,
+    "payer_groups": {},
+    "issue_domain_counts": {}
+  }
+}

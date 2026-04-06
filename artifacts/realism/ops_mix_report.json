@@ -1,0 +1,175 @@
+{
+  "overall_status": "pass",
+  "summary_counts": {
+    "pass": 3,
+    "warn": 0,
+    "fail": 0
+  },
+  "dimensions": {
+    "medium_volume_ops_realism": {
+      "status": "pass",
+      "metrics": {
+        "encounter_count": 62,
+        "active_exception_count": 24,
+        "department_queue_mix": {
+          "OR / Hospital Outpatient Surgery / Procedural Areas": {
+            "Modifiers / Edits / Prebill Holds": 4,
+            "Correction / Rebill Pending": 2,
+            "Documentation Support Exceptions": 2
+          },
+          "Outpatient Infusion / Oncology Infusion": {
+            "Charge Reconciliation Monitor": 4,
+            "Coding Pending Review": 3,
+            "Documentation Support Exceptions": 2,
+            "Modifiers / Edits / Prebill Holds": 2
+          },
+          "Radiology / Interventional Radiology": {
+            "Documentation Support Exceptions": 3,
+            "Coding Pending Review": 2
+          }
+        },
+        "distinct_dominant_queues": 3,
+        "reroute_distribution": {
+          "0": 10,
+          "1": 6,
+          "2": 4,
+          "3": 4
+        },
+        "rerouted_case_count": 14,
+        "multi_reroute_count": 8,
+        "repeat_exception_rate_by_department": {
+          "OR / Hospital Outpatient Surgery / Procedural Areas": 1.0,
+          "Outpatient Infusion / Oncology Infusion": 0.3636,
+          "Radiology / Interventional Radiology": 0.4
+        },
+        "repeat_root_cause_cluster_count_ge_2": 8
+      },
+      "anti_pattern_flags": []
+    },
+    "payable_state_signal_realism": {
+      "status": "pass",
+      "metrics": {
+        "denials_feedback_row_count": 9,
+        "linked_upstream_rate": 1.0,
+        "payer_group_count": 4,
+        "denial_category_counts": {
+          "documentation_support_denial": 6,
+          "technical_denial": 3
+        },
+        "issue_domain_counts": {
+          "Documentation support failure": 8,
+          "Billing / claim-edit failure": 1
+        },
+        "closed_compliance_count": 4,
+        "closed_compliance_signal_rows": 4
+      },
+      "anti_pattern_flags": []
+    },
+    "ops_mix_payable_antipatterns": {
+      "status": "pass",
+      "metrics": {
+        "denial_feedback_share_of_encounters": 0.1452,
+        "blank_upstream_issue_domain_count": 0,
+        "top_failure_class_by_department": {
+          "infusion": "modifier_dependency_case",
+          "radiology_ir": "unsupported_charge_risk",
+          "or_procedural": "packaged_or_nonbillable_suppressed"
+        },
+        "repeat_exception_rate_by_department": {
+          "OR / Hospital Outpatient Surgery / Procedural Areas": 1.0,
+          "Outpatient Infusion / Oncology Infusion": 0.3636,
+          "Radiology / Interventional Radiology": 0.4
+        },
+        "distinct_dominant_queues": 3
+      },
+      "anti_pattern_flags": []
+    }
+  },
+  "anti_pattern_flags": [],
+  "what_still_feels_fake": [],
+  "ops_mix_snapshot": {
+    "artifact_row_counts": {
+      "encounters": 62,
+      "claims_or_account_status": 62,
+      "expected_charge_opportunities": 94,
+      "exception_queue": 24,
+      "queue_history": 50,
+      "priority_scores": 24,
+      "denials_feedback": 9
+    },
+    "department_queue_mix": {
+      "OR / Hospital Outpatient Surgery / Procedural Areas": {
+        "Modifiers / Edits / Prebill Holds": 4,
+        "Correction / Rebill Pending": 2,
+        "Documentation Support Exceptions": 2
+      },
+      "Outpatient Infusion / Oncology Infusion": {
+        "Charge Reconciliation Monitor": 4,
+        "Coding Pending Review": 3,
+        "Documentation Support Exceptions": 2,
+        "Modifiers / Edits / Prebill Holds": 2
+      },
+      "Radiology / Interventional Radiology": {
+        "Documentation Support Exceptions": 3,
+        "Coding Pending Review": 2
+      }
+    },
+    "reroute_distribution": {
+      "0": 10,
+      "1": 6,
+      "2": 4,
+      "3": 4
+    },
+    "repeat_exception_rate_by_department": {
+      "OR / Hospital Outpatient Surgery / Procedural Areas": 1.0,
+      "Outpatient Infusion / Oncology Infusion": 0.3636,
+      "Radiology / Interventional Radiology": 0.4
+    },
+    "repeat_root_cause_clusters_by_department": {
+      "OR / Hospital Outpatient Surgery / Procedural Areas": {
+        "Workflow / handoff": 4,
+        "Billing edit management": 2,
+        "Documentation behavior": 2
+      },
+      "Outpatient Infusion / Oncology Infusion": {
+        "Coding practice": 5,
+        "Documentation behavior": 4,
+        "Workflow / handoff": 2
+      },
+      "Radiology / Interventional Radiology": {
+        "Documentation behavior": 3,
+        "Coding practice": 2
+      }
+    },
+    "status_stage_counts": {
+      "Final billed": 30,
+      "Documentation pending": 7,
+      "Prebill edit / hold": 6,
+      "Coding pending": 5,
+      "Charge capture pending": 4,
+      "Closed / monitored through denial feedback only": 4,
+      "Ready to final bill": 4,
+      "Correction / rebill pending": 2
+    },
+    "closed_compliance_count": 4,
+    "payable_signal_counts": {
+      "denials_feedback_rows": 9,
+      "upstream_linked_rows": 9,
+      "payer_group_counts": {
+        "Managed Medicaid": 4,
+        "Commercial": 3,
+        "Blue Cross": 1,
+        "Medicare": 1
+      },
+      "issue_domain_counts": {
+        "Documentation support failure": 8,
+        "Billing / claim-edit failure": 1
+      },
+      "denial_category_counts": {
+        "documentation_support_denial": 6,
+        "technical_denial": 3
+      },
+      "closed_compliance_signal_rows": 4
+    }
+  }
+}

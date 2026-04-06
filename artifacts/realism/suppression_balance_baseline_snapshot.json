@@ -1,0 +1,86 @@
+{
+  "overall": {
+    "status_counts": {
+      "recoverable_missed_charge": 3,
+      "unsupported_charge_risk": 7,
+      "packaged_or_nonbillable_suppressed": 7,
+      "modifier_dependency_case": 5
+    },
+    "status_rates": {
+      "recoverable_missed_charge": 0.0667,
+      "unsupported_charge_risk": 0.1556,
+      "packaged_or_nonbillable_suppressed": 0.1556,
+      "modifier_dependency_case": 0.1111
+    }
+  },
+  "by_department": {
+    "infusion": {
+      "status_counts": {
+        "recoverable_missed_charge": 3,
+        "unsupported_charge_risk": 2,
+        "packaged_or_nonbillable_suppressed": 2,
+        "modifier_dependency_case": 3
+      },
+      "status_rates": {
+        "recoverable_missed_charge": 0.1875,
+        "unsupported_charge_risk": 0.125,
+        "packaged_or_nonbillable_suppressed": 0.125,
+        "modifier_dependency_case": 0.1875
+      },
+      "top_failure_class": "modifier_dependency_case",
+      "suppression_reason_counts": {
+        "packaged_or_integral": 2
+      },
+      "unsupported_reason_counts": {
+        "missing_stop_time": 1,
+        "undocumented_waste": 1
+      }
+    },
+    "radiology_ir": {
+      "status_counts": {
+        "recoverable_missed_charge": 0,
+        "unsupported_charge_risk": 3,
+        "packaged_or_nonbillable_suppressed": 2,
+        "modifier_dependency_case": 2
+      },
+      "status_rates": {
+        "recoverable_missed_charge": 0.0,
+        "unsupported_charge_risk": 0.2143,
+        "packaged_or_nonbillable_suppressed": 0.1429,
+        "modifier_dependency_case": 0.1429
+      },
+      "top_failure_class": "unsupported_charge_risk",
+      "suppression_reason_counts": {
+        "incomplete_study": 1,
+        "packaged_or_integral": 1
+      },
+      "unsupported_reason_counts": {
+        "missing_device_linkage": 1,
+        "incomplete_study": 1,
+        "missing_laterality": 1
+      }
+    },
+    "or_procedural": {
+      "status_counts": {
+        "recoverable_missed_charge": 0,
+        "unsupported_charge_risk": 2,
+        "packaged_or_nonbillable_suppressed": 3,
+        "modifier_dependency_case": 0
+      },
+      "status_rates": {
+        "recoverable_missed_charge": 0.0,
+        "unsupported_charge_risk": 0.1333,
+        "packaged_or_nonbillable_suppressed": 0.2,
+        "modifier_dependency_case": 0.0
+      },
+      "top_failure_class": "packaged_or_nonbillable_suppressed",
+      "suppression_reason_counts": {
+        "packaged_or_integral": 3
+      },
+      "unsupported_reason_counts": {
+        "missing_implant_linkage": 1,
+        "missing_case_timestamp": 1
+      }
+    }
+  }
+}

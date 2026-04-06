@@ -1,0 +1,30 @@
+{
+  "infusion": {
+    "start_stop_dependency_count": 11,
+    "sequence_non_primary_count": 2,
+    "hydration_conditional_count": 1,
+    "waste_case_count": 2,
+    "access_site_case_count": 1,
+    "documentation_gap_counts": {
+      "<blank>": 10,
+      "missing_stop_time": 1,
+      "undocumented_waste": 1
+    }
+  },
+  "radiology_ir": {
+    "completed_study_count": 9,
+    "incomplete_study_count": 2,
+    "laterality_site_count": 2,
+    "distinctness_case_count": 1,
+    "contrast_device_count": 1,
+    "unsupported_count": 3
+  },
+  "or_procedural": {
+    "discontinued_case_count": 2,
+    "implant_supply_count": 2,
+    "timestamp_gap_count": 1,
+    "late_post_risk_count": 2,
+    "postbill_recoverable_queue_count": 1,
+    "correction_history_count": 1
+  }
+}

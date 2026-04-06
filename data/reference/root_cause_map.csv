@@ -1,0 +1,9 @@
+root_cause_mechanism,mechanism_description,operational_owner_hint,included_in_v1
+People / training,Failure is driven by staff knowledge or training gap,Department operations,true
+Workflow / handoff,Failure is driven by queue routing timing or handoff breakdown,Revenue Integrity operations,true
+System build / interface,Failure is driven by configuration build or interface behavior,IT or application owner,true
+CDM / rule configuration,Failure is driven by charge master or rules configuration,Revenue Integrity operations,true
+Documentation behavior,Failure is driven by incomplete missing or late documentation,Clinical operations,true
+Coding practice,Failure is driven by coding decision or modifier application,Coding team,true
+Billing edit management,Failure is driven by edit queue management or rebill follow-through,Billing operations,true
+Payer-policy variance,Failure is driven by payer-specific rule variance not captured upstream,Billing operations,true

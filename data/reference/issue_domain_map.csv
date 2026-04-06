@@ -1,0 +1,9 @@
+issue_domain,domain_description,included_in_v1,notes
+Charge capture failure,Service or item was performed but the expected facility charge was not captured,true,Core V1 issue domain
+Charge integrity / configuration failure,Charge exists but code unit or configuration logic is incorrect,true,Use for deterministic facility-side logic only
+Documentation support failure,Charge support is missing late incomplete or inconsistent,true,Core V1 issue domain
+Patient status / case classification failure,Status logic affects workflow stage or billing pathway,false,Keep available for later expansion but do not center V1 on ED or Observation
+Coding failure,Coding selection or alignment issue blocks a clean facility billing path,true,Included only where it affects outpatient facility-side control-room routing
+Billing / claim-edit failure,Prebill edit hold or late-posting workflow prevents clean billing,true,Core V1 issue domain
+Packaged / non-billable / false-positive classification,Apparent opportunity suppresses because the activity is integral packaged or not separately billable,true,Core suppression domain for V1 realism
+Denial feedback signal,Downstream denial pattern used as control-failure signal only,false,Deferred as a full workflow but retained as a mapping domain

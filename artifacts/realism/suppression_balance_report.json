@@ -1,0 +1,249 @@
+{
+  "overall_status": "pass",
+  "summary_counts": {
+    "pass": 4,
+    "warn": 0,
+    "fail": 0
+  },
+  "dimensions": {
+    "undercapture_balance_realism": {
+      "status": "pass",
+      "metrics": {
+        "overall_count": 10,
+        "overall_rate": 0.1064,
+        "department_counts": {
+          "Outpatient Infusion / Oncology Infusion": 6,
+          "OR / Hospital Outpatient Surgery / Procedural Areas": 2,
+          "Radiology / Interventional Radiology": 2
+        },
+        "department_rates": {
+          "Outpatient Infusion / Oncology Infusion": 0.1818,
+          "Radiology / Interventional Radiology": 0.0714,
+          "OR / Hospital Outpatient Surgery / Procedural Areas": 0.0606
+        },
+        "departments_with_undercapture_count": 3,
+        "top_failure_class_by_department": {
+          "infusion": "modifier_dependency_case",
+          "radiology_ir": "unsupported_charge_risk",
+          "or_procedural": "packaged_or_nonbillable_suppressed"
+        }
+      },
+      "anti_pattern_flags": []
+    },
+    "unsupported_balance_realism": {
+      "status": "pass",
+      "metrics": {
+        "overall_count": 17,
+        "overall_rate": 0.1809,
+        "department_counts": {
+          "Outpatient Infusion / Oncology Infusion": 6,
+          "Radiology / Interventional Radiology": 6,
+          "OR / Hospital Outpatient Surgery / Procedural Areas": 5
+        },
+        "unsupported_with_charge_count": 17,
+        "unsupported_with_charge_rate": 1.0,
+        "closed_compliance_unsupported_count": 4,
+        "charge_status_distribution": {
+          "posted": 8,
+          "posted_pending_support": 7,
+          "posted_held_prebill": 2
+        }
+      },
+      "anti_pattern_flags": []
+    },
+    "suppression_balance_realism": {
+      "status": "pass",
+      "metrics": {
+        "overall_count": 15,
+        "overall_rate": 0.1596,
+        "department_counts": {
+          "OR / Hospital Outpatient Surgery / Procedural Areas": 6,
+          "Outpatient Infusion / Oncology Infusion": 5,
+          "Radiology / Interventional Radiology": 4
+        },
+        "meaningful_explanation_rate": 1.0,
+        "generic_explanation_rate": 0.0,
+        "department_reason_counts": {
+          "infusion": {
+            "same_day_hydration_integral_to_primary_infusion": 2,
+            "access_site_integral_to_primary_infusion": 2,
+            "iv_push_documented_without_infusion_duration": 1
+          },
+          "radiology_ir": {
+            "incomplete_study": 2,
+            "contrast_packaged_into_primary_technical_service": 2
+          },
+          "or_procedural": {
+            "discontinued_before_billable_procedure_threshold": 4,
+            "supply_integral_to_procedural_package": 2
+          }
+        },
+        "suppressed_charge_capture_queue_count": 0
+      },
+      "anti_pattern_flags": []
+    },
+    "suppression_balance_antipatterns": {
+      "status": "pass",
+      "metrics": {
+        "overall_status_counts": {
+          "recoverable_missed_charge": 10,
+          "unsupported_charge_risk": 17,
+          "packaged_or_nonbillable_suppressed": 15,
+          "modifier_dependency_case": 10
+        },
+        "overall_status_rates": {
+          "recoverable_missed_charge": 0.1064,
+          "unsupported_charge_risk": 0.1809,
+          "packaged_or_nonbillable_suppressed": 0.1596,
+          "modifier_dependency_case": 0.1064
+        },
+        "top_failure_class_by_department": {
+          "infusion": "modifier_dependency_case",
+          "radiology_ir": "unsupported_charge_risk",
+          "or_procedural": "packaged_or_nonbillable_suppressed"
+        },
+        "separately_billable_rate": 0.7979,
+        "dominant_department_by_class": {
+          "recoverable_missed_charge": {
+            "department": "Outpatient Infusion / Oncology Infusion",
+            "share": 0.6
+          },
+          "unsupported_charge_risk": {
+            "department": "Outpatient Infusion / Oncology Infusion",
+            "share": 0.3529
+          },
+          "packaged_or_nonbillable_suppressed": {
+            "department": "OR / Hospital Outpatient Surgery / Procedural Areas",
+            "share": 0.4
+          },
+          "modifier_dependency_case": {
+            "department": "Outpatient Infusion / Oncology Infusion",
+            "share": 0.8
+          }
+        },
+        "suppression_reason_signatures": {
+          "infusion": [
+            "access_site_integral_to_primary_infusion",
+            "iv_push_documented_without_infusion_duration",
+            "same_day_hydration_integral_to_primary_infusion"
+          ],
+          "radiology_ir": [
+            "contrast_packaged_into_primary_technical_service",
+            "incomplete_study"
+          ],
+          "or_procedural": [
+            "discontinued_before_billable_procedure_threshold",
+            "supply_integral_to_procedural_package"
+          ]
+        },
+        "unsupported_reason_signatures": {
+          "infusion": [
+            "missing_stop_time",
+            "undocumented_waste"
+          ],
+          "radiology_ir": [
+            "incomplete_study",
+            "missing_device_linkage",
+            "missing_laterality"
+          ],
+          "or_procedural": [
+            "missing_case_timestamp",
+            "missing_implant_linkage"
+          ]
+        }
+      },
+      "anti_pattern_flags": []
+    }
+  },
+  "anti_pattern_flags": [],
+  "what_still_feels_fake": [],
+  "balance_snapshot": {
+    "overall": {
+      "status_counts": {
+        "recoverable_missed_charge": 10,
+        "unsupported_charge_risk": 17,
+        "packaged_or_nonbillable_suppressed": 15,
+        "modifier_dependency_case": 10
+      },
+      "status_rates": {
+        "recoverable_missed_charge": 0.1064,
+        "unsupported_charge_risk": 0.1809,
+        "packaged_or_nonbillable_suppressed": 0.1596,
+        "modifier_dependency_case": 0.1064
+      }
+    },
+    "by_department": {
+      "infusion": {
+        "status_counts": {
+          "recoverable_missed_charge": 6,
+          "unsupported_charge_risk": 6,
+          "packaged_or_nonbillable_suppressed": 5,
+          "modifier_dependency_case": 8
+        },
+        "status_rates": {
+          "recoverable_missed_charge": 0.1818,
+          "unsupported_charge_risk": 0.1818,
+          "packaged_or_nonbillable_suppressed": 0.1515,
+          "modifier_dependency_case": 0.2424
+        },
+        "top_failure_class": "modifier_dependency_case",
+        "suppression_reason_counts": {
+          "same_day_hydration_integral_to_primary_infusion": 2,
+          "access_site_integral_to_primary_infusion": 2,
+          "iv_push_documented_without_infusion_duration": 1
+        },
+        "unsupported_reason_counts": {
+          "missing_stop_time": 4,
+          "undocumented_waste": 2
+        }
+      },
+      "radiology_ir": {
+        "status_counts": {
+          "recoverable_missed_charge": 2,
+          "unsupported_charge_risk": 6,
+          "packaged_or_nonbillable_suppressed": 4,
+          "modifier_dependency_case": 2
+        },
+        "status_rates": {
+          "recoverable_missed_charge": 0.0714,
+          "unsupported_charge_risk": 0.2143,
+          "packaged_or_nonbillable_suppressed": 0.1429,
+          "modifier_dependency_case": 0.0714
+        },
+        "top_failure_class": "unsupported_charge_risk",
+        "suppression_reason_counts": {
+          "incomplete_study": 2,
+          "contrast_packaged_into_primary_technical_service": 2
+        },
+        "unsupported_reason_counts": {
+          "missing_device_linkage": 2,
+          "incomplete_study": 2,
+          "missing_laterality": 2
+        }
+      },
+      "or_procedural": {
+        "status_counts": {
+          "recoverable_missed_charge": 2,
+          "unsupported_charge_risk": 5,
+          "packaged_or_nonbillable_suppressed": 6,
+          "modifier_dependency_case": 0
+        },
+        "status_rates": {
+          "recoverable_missed_charge": 0.0606,
+          "unsupported_charge_risk": 0.1515,
+          "packaged_or_nonbillable_suppressed": 0.1818,
+          "modifier_dependency_case": 0.0
+        },
+        "top_failure_class": "packaged_or_nonbillable_suppressed",
+        "suppression_reason_counts": {
+          "discontinued_before_billable_procedure_threshold": 4,
+          "supply_integral_to_procedural_package": 2
+        },
+        "unsupported_reason_counts": {
+          "missing_implant_linkage": 3,
+          "missing_case_timestamp": 2
+        }
+      }
+    }
+  }
+}

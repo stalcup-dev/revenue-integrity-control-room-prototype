@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ri-control-room"
+version = "0.1.0"
+description = "Deterministic outpatient facility-side revenue integrity control room prototype."
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+    "pandas>=2.3,<2.4",
+    "pyarrow>=19,<20",
+    "streamlit>=1.44,<1.45",
+]
+
+[project.optional-dependencies]
+dev = [
+    "playwright>=1.58,<1.59",
+    "pytest>=9,<10",
+    "ruff>=0.14,<0.15",
+]
+
+[project.scripts]
+ri-control-room = "ri_control_room.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["ri_control_room*"]
+
+[tool.ruff]
+extend-exclude = ["pytest-cache-files-*"]

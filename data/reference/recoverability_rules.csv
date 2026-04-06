@@ -1,0 +1,5 @@
+recoverability_state,workflow_stage_pattern,window_rule,financial_meaning,active_queue_allowed
+Pre-final-bill recoverable,Open encounter through Ready to final bill,Current stage occurs before final bill and before local timing window expiry,Work is still financially recoverable before billing finalization,true
+Post-final-bill recoverable by correction / rebill,Final billed or Correction / rebill pending with open correction pathway,Final bill has occurred but correction or rebill remains within the allowed window,Work may still be financially recoverable through correction,true
+Post-window financially lost,Expired correction or missed pre-final-bill timing window,Correction pathway has expired or pre-final-bill recovery window has closed,Work is no longer financially recoverable,true
+Financially closed but still compliance-relevant,Closed or resolved account with residual support concern,Financial recovery is closed but compliance or audit relevance remains,No further financial recovery but issue may still matter for monitoring,false

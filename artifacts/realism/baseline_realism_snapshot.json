@@ -1,0 +1,179 @@
+{
+  "overall_status": "fail",
+  "summary_counts": {
+    "pass": 2,
+    "warn": 0,
+    "fail": 5
+  },
+  "dimensions": {
+    "recoverability_mix": {
+      "status": "fail",
+      "metrics": {
+        "all_status_counts": {
+          "Pre-final-bill recoverable": 15,
+          "Post-window financially lost": 14,
+          "Post-final-bill recoverable by correction / rebill": 1
+        },
+        "active_counts": {
+          "Pre-final-bill recoverable": 12,
+          "Post-final-bill recoverable by correction / rebill": 1
+        },
+        "active_lost_rate": 0.0,
+        "closed_compliance_count": 0
+      },
+      "anti_pattern_flags": [
+        "Missing recoverability states: Financially closed but still compliance-relevant",
+        "No active post-window financially lost items are visible."
+      ]
+    },
+    "workflow_state_realism": {
+      "status": "fail",
+      "metrics": {
+        "active_stage_counts": {
+          "Documentation pending": 5,
+          "Charge capture pending": 3,
+          "Coding pending": 2,
+          "Prebill edit / hold": 2,
+          "Correction / rebill pending": 1
+        },
+        "active_stage_count": 5,
+        "stage_age_summary_days": {
+          "Charge capture pending": {
+            "min": 3.0,
+            "median": 3.0,
+            "max": 3.0,
+            "nunique": 1.0
+          },
+          "Coding pending": {
+            "min": 3.0,
+            "median": 3.0,
+            "max": 3.0,
+            "nunique": 1.0
+          },
+          "Correction / rebill pending": {
+            "min": 3.0,
+            "median": 3.0,
+            "max": 3.0,
+            "nunique": 1.0
+          },
+          "Documentation pending": {
+            "min": 3.0,
+            "median": 3.0,
+            "max": 3.0,
+            "nunique": 1.0
+          },
+          "Prebill edit / hold": {
+            "min": 3.0,
+            "median": 3.0,
+            "max": 3.0,
+            "nunique": 1.0
+          }
+        },
+        "one_current_blocker_violations": 0,
+        "stage_age_median_range_days": 0.0
+      },
+      "anti_pattern_flags": [
+        "Stage-specific aging is effectively flat across the active workflow."
+      ]
+    },
+    "queue_history_realism": {
+      "status": "fail",
+      "metrics": {
+        "reroute_count_distribution": {
+          "0": 10,
+          "1": 2,
+          "2": 1
+        },
+        "first_route_only_count": 10,
+        "rerouted_count": 3,
+        "multi_reroute_count": 1,
+        "transition_count": 3,
+        "routing_reason_populated_count": 0
+      },
+      "anti_pattern_flags": [
+        "Routing reasons are absent."
+      ]
+    },
+    "financial_consequence_realism": {
+      "status": "fail",
+      "metrics": {
+        "late_charge_rate": 0.0,
+        "lost_dollars_after_timing_window": 0.0,
+        "recoverable_dollars_still_open": 9075.0
+      },
+      "anti_pattern_flags": [
+        "Late charge rate is zero.",
+        "Lost dollars after timing window are zero."
+      ]
+    },
+    "exception_class_balance": {
+      "status": "pass",
+      "metrics": {
+        "recoverable_missed_charge_count": 3,
+        "unsupported_charge_risk_count": 6,
+        "suppressed_packaged_nonbillable_count": 8
+      },
+      "anti_pattern_flags": []
+    },
+    "distribution_realism": {
+      "status": "pass",
+      "metrics": {
+        "department_queue_mix": {
+          "OR / Hospital Outpatient Surgery / Procedural Areas": {
+            "Documentation Support Exceptions": 2,
+            "Charge Reconciliation Monitor": 1,
+            "Correction / Rebill Pending": 1,
+            "Modifiers / Edits / Prebill Holds": 1
+          },
+          "Outpatient Infusion / Oncology Infusion": {
+            "Charge Reconciliation Monitor": 1,
+            "Coding Pending Review": 1,
+            "Documentation Support Exceptions": 1,
+            "Modifiers / Edits / Prebill Holds": 1
+          },
+          "Radiology / Interventional Radiology": {
+            "Documentation Support Exceptions": 2,
+            "Charge Reconciliation Monitor": 1,
+            "Coding Pending Review": 1
+          }
+        },
+        "department_repeat_exception_rate": {
+          "OR / Hospital Outpatient Surgery / Procedural Areas": 0.4,
+          "Outpatient Infusion / Oncology Infusion": 0.25,
+          "Radiology / Interventional Radiology": 0.0
+        },
+        "distinct_dominant_queues": 2
+      },
+      "anti_pattern_flags": []
+    },
+    "correction_history_realism": {
+      "status": "fail",
+      "metrics": {
+        "postbill_recoverable_case_count": 1,
+        "correction_history_row_count": 0,
+        "postbill_cases_with_correction_history": 0
+      },
+      "anti_pattern_flags": [
+        "Not every post-final-bill recoverable case has correction-history support."
+      ]
+    }
+  },
+  "anti_pattern_flags": [
+    "Missing recoverability states: Financially closed but still compliance-relevant",
+    "No active post-window financially lost items are visible.",
+    "Stage-specific aging is effectively flat across the active workflow.",
+    "Routing reasons are absent.",
+    "Late charge rate is zero.",
+    "Lost dollars after timing window are zero.",
+    "Not every post-final-bill recoverable case has correction-history support."
+  ],
+  "what_still_feels_fake": [
+    "Missing recoverability states: Financially closed but still compliance-relevant",
+    "No active post-window financially lost items are visible.",
+    "Stage-specific aging is effectively flat across the active workflow.",
+    "Routing reasons are absent.",
+    "Late charge rate is zero.",
+    "Lost dollars after timing window are zero.",
+    "Not every post-final-bill recoverable case has correction-history support."
+  ]
+}

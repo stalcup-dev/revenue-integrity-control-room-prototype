@@ -56,127 +56,36 @@ Use [case_study.md](./case_study.md) for the full narrative. The screenshots bel
 
 ## Quick Start
 
-Fastest Windows path for a non-technical reviewer:
+For recruiters and hiring managers on Windows:
 
 1. Double-click [`Launch Hospital Charge Capture Demo.cmd`](./Launch%20Hospital%20Charge%20Capture%20Demo.cmd)
 2. Wait for the local setup to finish on first launch
 3. Let the browser tab open automatically
 
-That launcher:
-
-- reuses the local demo environment if it already exists
-- otherwise finds Python `3.12` or `3.13`, bootstraps `.venv-demo`, installs pinned runtime packages, and starts the app
-- opens the local Streamlit URL automatically when the server is ready
-- pauses with a plain-English message if supported Python is missing
-
-Expected local URL:
-
-```text
-http://127.0.0.1:8501
-```
-
-No-Python-required handoff path for another Windows machine:
+If the machine does not have Python installed, build the portable Windows package:
 
 ```powershell
 python scripts/build_windows_portable.py
 ```
 
-That build creates:
+Then share `dist/windows-portable/` or `dist/hospital-charge-capture-analytics-windows-portable.zip` and have them double-click `Launch Hospital Charge Capture Demo.cmd` inside the packaged folder.
 
-- `dist/windows-portable/`
-- `dist/hospital-charge-capture-analytics-windows-portable.zip`
-
-Share either one, then have the reviewer double-click `Launch Hospital Charge Capture Demo.cmd` inside the packaged folder.
-
-Supported Python: `3.12`-`3.13`. Tested on `3.13.3`.
-
-Install path intent:
-
-- [`requirements.txt`](./requirements.txt) is the pinned, reproducible demo path used by [`scripts/run_demo.py`](./scripts/run_demo.py).
-- [`pyproject.toml`](./pyproject.toml) carries the package dependency ranges used by the editable install and contributor workflow.
-- Use [`Launch Hospital Charge Capture Demo.cmd`](./Launch%20Hospital%20Charge%20Capture%20Demo.cmd) as the default recruiter/demo path on Windows.
-- Use `python scripts/build_windows_portable.py` when you need a no-Python-required Windows handoff package for someone else.
-- Use `python scripts/run_demo.py` as the terminal fallback for the recruiter/demo path.
-- Use `python -m ri_control_room ...` after `python -m pip install -e .` for contributor and operating commands.
-
-Terminal fallback from the repo root:
+Terminal fallback:
 
 ```bash
 python scripts/run_demo.py
 ```
 
-What that command does:
+If port `8501` is busy, use `python scripts/run_demo.py --port 8502`.
 
-- creates or reuses a local `.venv-demo` virtual environment
-- installs pinned runtime dependencies there
-- reuses existing processed demo artifacts or rebuilds them if they are missing or unreadable
-- launches the Streamlit app
-- opens the browser automatically when the local server is ready
-- prints a short end-of-boot summary with the local URL, first pages to open, artifact state, validation status, and `Ctrl+C` stop instruction
-
-Validation is not run as part of the demo boot path.
-
-This keeps the primary recruiter path isolated from your global Python environment.
-
-Backup manual path if you want to mirror the pinned demo install steps yourself:
-
-Create the virtual environment:
-
-```bash
-python -m venv .venv
-```
-
-Windows PowerShell:
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
-python -m pip install -e .
-python -m ri_control_room demo
-```
-
-Windows no-activation fallback:
-
-```powershell
-.\.venv\Scripts\python -m pip install -r requirements.txt
-.\.venv\Scripts\python -m pip install -e .
-.\.venv\Scripts\python -m ri_control_room demo
-```
-
-macOS / Linux:
-
-```bash
-source .venv/bin/activate
-python -m pip install -r requirements.txt
-python -m pip install -e .
-python -m ri_control_room demo
-```
-
-`python -m pip install -e .` is sufficient for editable contributor use because it installs the runtime ranges declared in [`pyproject.toml`](./pyproject.toml). Add `python -m pip install -r requirements.txt` first when you want the same pinned demo environment used by `python scripts/run_demo.py`.
-
-If port `8501` is already busy, use `python scripts/run_demo.py --port 8502` or `python -m ri_control_room demo --port 8502`.
-
-Contributor / operating path if you want the steps separated inside that same virtual environment:
-
-```bash
-python -m pip install -r requirements.txt
-python -m pip install -e .
-python -m ri_control_room build
-python -m ri_control_room app
-```
-
-After the editable install, the `ri-control-room` console script is also available. The docs use `python -m ri_control_room ...` as the canonical contributor / operating command family so the install story stays consistent across platforms.
+If you are here to learn how the project is put together rather than just run it, start with [docs/OPERATING_RUNBOOK.md](./docs/OPERATING_RUNBOOK.md).
 
 ## What To Click First
 
-1. `Control Room Summary`
-   Start here for the main deterministic story: current failed control, blocker, owner, aging, recoverability, and next action.
-2. `Opportunity & Action Tracker`
-   Open the selected case evidence trace and follow-through sections to see queue governance, current owner, checkpoint status, and hold / expand / revise framing.
-3. `Charge Reconciliation Monitor`
-   Check how backlog, overdue pressure, and service-line scoping behave on one of the core operating pages.
-4. `Documentation Support Exceptions`
-   Use this page to see unsupported-charge pressure, documentation-gap patterns, and routing between documentation, coding, and operations.
+1. `Control Room Summary` for the main deterministic story.
+2. `Opportunity & Action Tracker` for case evidence and follow-through.
+3. `Charge Reconciliation Monitor` for backlog pressure and service-line routing.
+4. `Documentation Support Exceptions` for unsupported-charge pressure and accountability.
 
 ## Repo Map
 

@@ -4,6 +4,8 @@ This folder contains the public proof layer for the repo.
 
 Start here first:
 
+- [`../Launch Hospital Charge Capture Demo.cmd`](../Launch%20Hospital%20Charge%20Capture%20Demo.cmd) if you want to run the app locally on Windows
+- [`../docs/recruiter_quickstart.md`](../docs/recruiter_quickstart.md) for the shortest launch guide
 - [`proof_index.md`](./proof_index.md)
 - [`project_summary_and_scope.md`](./project_summary_and_scope.md)
 - [`reviewer_walkthrough_pack/or_prebill_hold_story_walkthrough.md`](./reviewer_walkthrough_pack/or_prebill_hold_story_walkthrough.md)

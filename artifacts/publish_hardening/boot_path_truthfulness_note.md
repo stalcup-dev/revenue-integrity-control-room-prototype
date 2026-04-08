@@ -2,9 +2,11 @@
 
 ## What changed
 
+- The docs now lead with the Windows double-click launcher and the portable no-Python package path.
 - The docs now describe demo artifact handling as reuse-or-rebuild only.
 - The docs now state explicitly that validation is not run during demo boot.
 - The launcher now ends with a compact summary block after Streamlit is reachable.
+- The runtime now opens the browser automatically when the local server is ready.
 
 ## Artifact-handling wording alignment
 
@@ -16,6 +18,19 @@ This wording is now aligned in:
 - [`README.md`](../../README.md)
 - [`docs/recruiter_quickstart.md`](../../docs/recruiter_quickstart.md)
 - [`src/ri_control_room/demo.py`](../../src/ri_control_room/demo.py)
+
+## Launch-path alignment
+
+- Default Windows local path: [`Launch Hospital Charge Capture Demo.cmd`](../../Launch%20Hospital%20Charge%20Capture%20Demo.cmd)
+- No-Python-required handoff build: [`scripts/build_windows_portable.py`](../../scripts/build_windows_portable.py)
+- Terminal fallback bootstrap: [`scripts/run_demo.py`](../../scripts/run_demo.py)
+
+This launch hierarchy is now reflected in:
+
+- [`README.md`](../../README.md)
+- [`docs/recruiter_quickstart.md`](../../docs/recruiter_quickstart.md)
+- [`docs/README.md`](../../docs/README.md)
+- [`docs/OPERATING_RUNBOOK.md`](../../docs/OPERATING_RUNBOOK.md)
 
 ## Python version message
 

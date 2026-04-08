@@ -71,16 +71,23 @@ def test_cli_demo_command_builds_if_artifacts_missing_and_prints_summary_block(
         build_calls.append(repo_root)
         return repo_root / "data" / "processed" / "run_manifest.json"
 
+    browser_urls: list[str] = []
+
     monkeypatch.setattr("ri_control_room.demo.demo_artifacts_ready", lambda _repo_root: False)
     monkeypatch.setattr("ri_control_room.demo.build_operating_artifacts", _fake_build)
     monkeypatch.setattr("ri_control_room.demo._wait_for_demo_server", lambda *args, **kwargs: True)
     monkeypatch.setattr("ri_control_room.demo.subprocess.Popen", _FakePopen)
+    monkeypatch.setattr(
+        "ri_control_room.demo.webbrowser.open",
+        lambda url, new=0: browser_urls.append(url) or True,
+    )
 
     exit_code = main(["--repo-root", str(ROOT), "demo", "--port", "8512"])
 
     assert exit_code == 0
     assert build_calls == [ROOT]
     assert calls
+    assert browser_urls == ["http://127.0.0.1:8512"]
     assert calls[0][:3] == [sys.executable, "-m", "streamlit"]
     output = capsys.readouterr().out
     assert "Processed artifacts rebuilt:" in output
@@ -89,3 +96,4 @@ def test_cli_demo_command_builds_if_artifacts_missing_and_prints_summary_block(
     assert "Open first: Control Room Summary -> Opportunity & Action Tracker -> Charge Reconciliation Monitor" in output
     assert "Validation: Not run during demo boot" in output
     assert "Stop: Ctrl+C" in output
+    assert "Browser: opened automatically" in output

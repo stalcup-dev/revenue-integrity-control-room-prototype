@@ -5,6 +5,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
+import webbrowser
 from pathlib import Path
 
 from ri_control_room.artifacts import load_existing_priority_scores, resolve_repo_root
@@ -126,6 +127,17 @@ def _stop_streamlit_process(process: subprocess.Popen[object]) -> None:
         process.wait(timeout=5)
 
 
+def _open_demo_browser(*, port: int) -> str:
+    url = demo_url(port)
+    try:
+        opened = webbrowser.open(url, new=2)
+    except webbrowser.Error:
+        opened = False
+    if opened:
+        return "Browser: opened automatically"
+    return f"Browser: open {url}"
+
+
 def launch_demo_app(
     repo_root: Path | None = None,
     *,
@@ -154,6 +166,7 @@ def run_demo(
     )
     try:
         if _wait_for_demo_server(process, port=port):
+            browser_note = _open_demo_browser(port=port)
             print(
                 demo_boot_summary(
                     port=port,
@@ -161,6 +174,7 @@ def run_demo(
                 ),
                 flush=True,
             )
+            print(browser_note, flush=True)
         return int(process.wait())
     except KeyboardInterrupt:
         print("\nStopping demo...", flush=True)

@@ -56,15 +56,50 @@ Use [case_study.md](./case_study.md) for the full narrative. The screenshots bel
 
 ## Quick Start
 
+Fastest Windows path for a non-technical reviewer:
+
+1. Double-click [`Launch Hospital Charge Capture Demo.cmd`](./Launch%20Hospital%20Charge%20Capture%20Demo.cmd)
+2. Wait for the local setup to finish on first launch
+3. Let the browser tab open automatically
+
+That launcher:
+
+- reuses the local demo environment if it already exists
+- otherwise finds Python `3.12` or `3.13`, bootstraps `.venv-demo`, installs pinned runtime packages, and starts the app
+- opens the local Streamlit URL automatically when the server is ready
+- pauses with a plain-English message if supported Python is missing
+
+Expected local URL:
+
+```text
+http://127.0.0.1:8501
+```
+
+No-Python-required handoff path for another Windows machine:
+
+```powershell
+python scripts/build_windows_portable.py
+```
+
+That build creates:
+
+- `dist/windows-portable/`
+- `dist/hospital-charge-capture-analytics-windows-portable.zip`
+
+Share either one, then have the reviewer double-click `Launch Hospital Charge Capture Demo.cmd` inside the packaged folder.
+
 Supported Python: `3.12`-`3.13`. Tested on `3.13.3`.
 
 Install path intent:
 
 - [`requirements.txt`](./requirements.txt) is the pinned, reproducible demo path used by [`scripts/run_demo.py`](./scripts/run_demo.py).
 - [`pyproject.toml`](./pyproject.toml) carries the package dependency ranges used by the editable install and contributor workflow.
-- Use `python scripts/run_demo.py` for the recruiter/demo path. Use `python -m ri_control_room ...` after `python -m pip install -e .` for contributor and operating commands.
+- Use [`Launch Hospital Charge Capture Demo.cmd`](./Launch%20Hospital%20Charge%20Capture%20Demo.cmd) as the default recruiter/demo path on Windows.
+- Use `python scripts/build_windows_portable.py` when you need a no-Python-required Windows handoff package for someone else.
+- Use `python scripts/run_demo.py` as the terminal fallback for the recruiter/demo path.
+- Use `python -m ri_control_room ...` after `python -m pip install -e .` for contributor and operating commands.
 
-Primary one-command path:
+Terminal fallback from the repo root:
 
 ```bash
 python scripts/run_demo.py
@@ -76,17 +111,12 @@ What that command does:
 - installs pinned runtime dependencies there
 - reuses existing processed demo artifacts or rebuilds them if they are missing or unreadable
 - launches the Streamlit app
+- opens the browser automatically when the local server is ready
 - prints a short end-of-boot summary with the local URL, first pages to open, artifact state, validation status, and `Ctrl+C` stop instruction
 
 Validation is not run as part of the demo boot path.
 
 This keeps the primary recruiter path isolated from your global Python environment.
-
-Expected local URL:
-
-```text
-http://127.0.0.1:8501
-```
 
 Backup manual path if you want to mirror the pinned demo install steps yourself:
 
@@ -150,6 +180,10 @@ After the editable install, the `ri-control-room` console script is also availab
 
 ## Repo Map
 
+- [`Launch Hospital Charge Capture Demo.cmd`](./Launch%20Hospital%20Charge%20Capture%20Demo.cmd): primary Windows double-click launcher for local review.
+- [`scripts/build_windows_portable.py`](./scripts/build_windows_portable.py): builder for the no-Python-required Windows package under `dist/`.
+- [`scripts/launch_demo_windows.ps1`](./scripts/launch_demo_windows.ps1): PowerShell bootstrap used by the local Windows launcher.
+- [`scripts/launch_portable_windows.ps1`](./scripts/launch_portable_windows.ps1): PowerShell bootstrap used inside the packaged portable build.
 - [`scripts/run_demo.py`](./scripts/run_demo.py): recruiter-friendly demo bootstrap from a fresh-ish clone.
 - [`case_study.md`](./case_study.md): narrative-first case-study walkthrough for portfolio review.
 - [`app/streamlit_app.py`](./app/streamlit_app.py): Streamlit app entrypoint.

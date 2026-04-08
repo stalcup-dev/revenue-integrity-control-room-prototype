@@ -6,17 +6,40 @@ This app demonstrates a deterministic, facility-side, outpatient-first revenue i
 
 ## Run It In Under 5 Minutes
 
-Primary path from the repo root:
+Fastest Windows path from the repo root:
+
+1. Double-click [`Launch Hospital Charge Capture Demo.cmd`](../Launch%20Hospital%20Charge%20Capture%20Demo.cmd)
+2. Wait for the first launch to finish local setup
+3. Let the browser tab open automatically
+
+That launcher:
+
+- reuses the local demo environment if it already exists
+- otherwise finds Python `3.12` or `3.13`, bootstraps `.venv-demo`, installs pinned runtime packages, and starts the app
+- opens the local Streamlit URL automatically when the server is ready
+- pauses with a plain-English message if supported Python is missing
+
+Terminal fallback from the repo root:
 
 ```bash
 python scripts/run_demo.py
 ```
 
+If the reviewer does not have Python installed, build the portable Windows package first:
+
+```powershell
+python scripts/build_windows_portable.py
+```
+
+That produces `dist/windows-portable/` plus `dist/hospital-charge-capture-analytics-windows-portable.zip`. Share the packaged folder or ZIP, then have the reviewer double-click `Launch Hospital Charge Capture Demo.cmd` inside it.
+
 Supported Python: `3.12`-`3.13`. Tested on `3.13.3`.
 
 Install path intent:
 
-- `python scripts/run_demo.py` is the pinned recruiter/demo path.
+- `Launch Hospital Charge Capture Demo.cmd` is the default Windows recruiter/demo path.
+- `python scripts/build_windows_portable.py` is the packaging path when the reviewer does not have Python installed.
+- `python scripts/run_demo.py` is the terminal fallback recruiter/demo path.
 - `requirements.txt` provides the exact runtime versions that bootstrap uses for reproducible demo behavior.
 - `pyproject.toml` provides the package dependency ranges used by `python -m pip install -e .` for editable install and contributor workflows.
 - `python -m ri_control_room ...` is the contributor / operating command family after the editable install is present.
@@ -27,7 +50,8 @@ That command will:
 2. install pinned runtime packages there
 3. reuse existing processed demo artifacts or rebuild them if they are missing or unreadable
 4. launch Streamlit at `http://127.0.0.1:8501`
-5. print a short end-of-boot summary with the URL, first pages, artifact state, validation status, and `Ctrl+C` stop instruction
+5. open the browser automatically when the server is ready
+6. print a short end-of-boot summary with the URL, first pages, artifact state, validation status, and `Ctrl+C` stop instruction
 
 Validation is not run as part of demo boot.
 

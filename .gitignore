@@ -13,6 +13,7 @@ tmp_streamlit_test/
 venv/
 env/
 *.egg-info/
+dist/
 
 artifacts/publish_hardening/*.txt
 artifacts/publish_hardening/*.html

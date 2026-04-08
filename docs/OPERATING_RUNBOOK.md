@@ -16,7 +16,11 @@ This is an operating prototype. It is not a denials platform, payer engine, pro-
 
 ## Current Commands
 
-This runbook assumes the contributor / operating path, not the one-command recruiter demo bootstrap in `python scripts/run_demo.py`.
+This runbook assumes the contributor / operating path, not the recruiter demo launchers. The recruiter-facing launch paths are:
+
+- `Launch Hospital Charge Capture Demo.cmd` for the default Windows double-click flow
+- `python scripts/build_windows_portable.py` when you need a no-Python-required Windows package
+- `python scripts/run_demo.py` as the terminal fallback bootstrap
 
 Install intent:
 

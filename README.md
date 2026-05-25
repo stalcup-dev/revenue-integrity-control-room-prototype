@@ -4,6 +4,8 @@ Hospital revenue integrity teams do not just need another dashboard. They need a
 
 This repo presents that problem as a deterministic control-room product with a React-first user experience on public-safe synthetic data. It traces documented performed activity to expected facility charge opportunity, surfaces the failed control, routes work to the accountable owner, and keeps blocker, aging, recoverability, and proof visible.
 
+The app is fully interactive: selecting filters, queues, and cases updates panel state in place so detail views, metrics, and supporting context reflect the current selection.
+
 Credibility comes from deterministic traceability, browser-visible operating pages, validation artifacts, and a clear scope boundary.
 
 It is intentionally positioned as both analytics and product engineering: the React surface demonstrates typed domain modeling, deterministic computation, route-level interaction design, and reviewer-ready communication.
@@ -63,11 +65,23 @@ Use [tests/test_case_detail_payload.py](./tests/test_case_detail_payload.py) as 
 
 - Deterministic control trace: links performed activity to expected charge opportunity and pinpoints workflow failure.
 - Queue-first model: keeps blocker, owner, aging, and recoverability visible at decision time.
+- Fully interactive stateful UI: user selections dynamically update detail panels, KPI context, and supporting views.
 - Product-grade React surface: route-based architecture with persistent filters and consistent interactions.
 - Proof-aware framing: combines operating views with explicit proof order, caveats, and freshness language.
 - Governance-ready prioritization: distinguishes work to do now, recoverable exposure, and financially closed but compliance-relevant states.
 - Extensible typed design: domain contracts and deterministic modules support safe feature growth.
 - Public-safe delivery: synthetic data and explicit boundaries support straightforward review and sharing.
+
+### Feature Highlights
+
+- Explainability by design: each surfaced exception is traceable from performed activity to expected charge opportunity to current blocker and owner decision.
+- Stateful decision interface: filter and case selections dynamically recompose KPI context, queue ranking, and detail-panel evidence.
+- Accountability-native workflow: each queue item keeps owner, aging, SLA posture, and next-step framing visible in one operating view.
+- Recoverability intelligence: recoverable exposure is separated from already-lost timing-window exposure to support financially meaningful triage.
+- Deterministic trust model: core prioritization is explicit and auditable without black-box scoring.
+- Evidence-packaged storytelling: UI behavior, proof artifacts, and decision-pack language stay aligned for reviewer-safe communication.
+- Scope-disciplined architecture: deterministic core remains primary while scenario, denial, and memo layers stay intentionally secondary.
+- Public-safe reproducibility: synthetic data preserves confidentiality while still showing realistic queue transitions and intervention follow-through.
 
 ## Tech Stack and Methods
 

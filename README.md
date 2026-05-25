@@ -8,7 +8,7 @@ Credibility comes from deterministic traceability, browser-visible operating pag
 
 It is intentionally positioned as both analytics and product engineering: the React surface demonstrates typed domain modeling, deterministic computation, route-level interaction design, and reviewer-ready communication.
 
-## Your Role and Ownership
+## Project Contributions
 
 - Designed and implemented the deterministic exception logic and decision framework.
 - Built the React-first product surface for queues, blockers, ownership, recoverability, and proof context.

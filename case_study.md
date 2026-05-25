@@ -4,7 +4,7 @@ This repo is easiest to evaluate as a story, not as a feature list.
 
 The core question is simple: when documented outpatient hospital work should have produced a facility charge but did not cleanly make it to billable state, can you tell what failed, who owns the next move, and whether the dollars are still recoverable?
 
-This project answers that question with a deterministic, facility-side, outpatient-first revenue integrity control room built on public-safe synthetic data.
+This project answers that question with a deterministic, facility-side, outpatient-first revenue integrity control room built as a React-first product surface on public-safe synthetic data.
 
 ## The Business Problem
 
@@ -13,6 +13,11 @@ Hospital revenue leakage often appears first as ambiguity.
 A procedure happened. Documentation exists. Something should likely have been charged. But the work can break across documentation, coding, CDM, billing edits, or operational handoffs. Generic dashboards can show lag, aging, and dollars. They usually do not tell a reviewer which control failed, why the case surfaced, who owns it now, or whether intervention still matters.
 
 That is the gap this app is designed to close.
+
+## Business Question to Decision
+
+- Business question: Which outpatient exception queues should be worked first to reduce preventable revenue loss and compliance risk?
+- Decision produced: Prioritize queues by current blocker, accountable owner, aging, and recoverability so teams can focus first on salvageable work with the highest operational urgency.
 
 ## The Story In One Case
 
@@ -32,26 +37,63 @@ The app does not stop at "charge leakage detected." It narrows the story down de
 
 That is the product claim: the repo makes the operating story legible, actionable, and provable.
 
+## Business Impact (Current Shipped Slice)
+
+This project does more than surface exceptions. It translates analysis into operating decisions with measurable impact signals.
+
+### Financial and queue impact
+
+- Open exceptions currently governed in one operating view: `24`
+- Recoverable dollars still open: `$9,740`
+- Dollars already lost after timing window: `$3,630`
+- Exceptions currently breaching SLA: `17`
+- Top pressure queue: `Billing operations | Modifiers / Edits / Prebill Holds`
+
+### Why this matters operationally
+
+- The worklist is not just descriptive. It distinguishes what can still be recovered from what is financially closed, so teams can prioritize salvageable work first.
+- The queue and owner framing reduces ambiguity by making the current blocker and accountable team explicit at case level.
+- The deterministic trace from performed activity to expected charge opportunity shortens root-cause time compared with generic KPI-only reporting.
+
+### Scenario-informed upside (explicitly caveated)
+
+On the same filtered slice, the current Scenario Lab v0 snapshot shows:
+
+- Projected backlog reduction: `4`
+- Projected SLA improvement: `+16.6 points`
+- Projected recoverable dollar lift: `$2,464`
+- 90-day impact estimate: `$7,392`
+
+These scenario figures are what-if estimates, not forecasts. They are included to support intervention prioritization, not to replace the deterministic operating proof.
+
+### Scope caveat
+
+All impact figures in this public repo are synthetic and public-safe by design. They demonstrate decision quality and operating realism, not live hospital financial performance.
+
 ## Visual Walkthrough
 
-Start on the summary page, where one deterministic story is surfaced in plain language.
+The current visual proof path is React-first and product-first: these screenshots highlight not just analysis outcomes, but software product decisions in routing, caveat framing, and evidence packaging.
 
 <p align="center">
-  <a href="artifacts/reviewer_walkthrough_pack/summary_featured_story.png"><img src="artifacts/reviewer_walkthrough_pack/summary_featured_story.png" alt="Control Room Summary with the featured deterministic story" width="48%"></a>
-  <a href="artifacts/reviewer_walkthrough_pack/summary_featured_story_proof_open.png"><img src="artifacts/reviewer_walkthrough_pack/summary_featured_story_proof_open.png" alt="Control Room Summary with representative proof opened" width="48%"></a>
+  <a href="artifacts/browser_audit/react_control_room_summary_2026-05-25.png"><img src="artifacts/browser_audit/react_control_room_summary_2026-05-25.png" alt="React Control Room Summary" width="48%"></a>
+  <a href="artifacts/browser_audit/react_reviewer_proof_pack_lens_2026-05-25.png"><img src="artifacts/browser_audit/react_reviewer_proof_pack_lens_2026-05-25.png" alt="React Reviewer Proof Pack Lens" width="48%"></a>
 </p>
 
-<p align="center"><em>The reviewer can see the surfaced case first, then open proof without leaving the narrative thread.</em></p>
-
-Then move into the operating views that show how this is more than a single screenshot.
+<p align="center"><em>Top row: React shell and proof-pack lens show deterministic operations framing and core-proof-first packaging in the same product surface.</em></p>
 
 <p align="center">
-  <a href="artifacts/page_storytelling_validation/charge_reconciliation_after.png"><img src="artifacts/page_storytelling_validation/charge_reconciliation_after.png" alt="Charge Reconciliation Monitor" width="32%"></a>
-  <a href="artifacts/page_storytelling_validation/action_tracker_after.png"><img src="artifacts/page_storytelling_validation/action_tracker_after.png" alt="Opportunity and Action Tracker" width="32%"></a>
-  <a href="artifacts/page_storytelling_validation/documentation_after.png"><img src="artifacts/page_storytelling_validation/documentation_after.png" alt="Documentation Support Exceptions" width="32%"></a>
+  <a href="artifacts/browser_audit/react_scenario_claim_tightening_lens_2026-05-25.png"><img src="artifacts/browser_audit/react_scenario_claim_tightening_lens_2026-05-25.png" alt="React Scenario Claim-Tightening Lens" width="48%"></a>
+  <a href="artifacts/browser_audit/react_decision_pack_freshness_lens_2026-05-25.png"><img src="artifacts/browser_audit/react_decision_pack_freshness_lens_2026-05-25.png" alt="React Decision Pack Freshness Lens" width="48%"></a>
 </p>
 
-<p align="center"><em>Backlog pressure, intervention follow-through, and documentation support exceptions are visible as operating work, not just KPIs.</em></p>
+<p align="center"><em>Bottom row: React caveat governance and freshness framing keep scenario language bounded and reviewer-safe.</em></p>
+
+Screenshot captions:
+
+1. React Control Room Summary: persistent global filters, deterministic queue posture, and product-level app shell quality.
+2. React Reviewer Proof Pack Lens: explicit core-vs-supporting proof hierarchy and reviewer read-order guidance.
+3. React Scenario Claim-Tightening Lens: claim wording is tightened to proof anchors with caveats visible at read time.
+4. React Decision Pack Freshness Lens: snapshot date and confidence framing reduce stale-proof and overclaim risk.
 
 ## What The Reviewer Should Notice
 

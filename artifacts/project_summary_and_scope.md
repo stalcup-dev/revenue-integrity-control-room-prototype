@@ -6,10 +6,13 @@
 - Facility-side only
 - Outpatient-first
 - Deterministic-first
+- React-first product surface
 - Action-ready revenue integrity control room
 - Synthetic/public-safe flagship project
 
-In shipped form, this project is a reviewer-ready facility-side outpatient control-room prototype that maps documented performed activity to expected facility charge opportunity, identifies the current failed control, routes work to the accountable owner, separates recoverable from already-lost exposure, and supports thin follow-through, what-if, downstream signal, and memo layers without changing the deterministic core.
+In shipped form, this project is a reviewer-ready facility-side outpatient control-room product with React as the primary interaction surface. It maps documented performed activity to expected facility charge opportunity, identifies the current failed control, routes work to the accountable owner, separates recoverable from already-lost exposure, and supports thin follow-through, what-if, downstream signal, and memo layers without changing the deterministic core.
+
+The Streamlit app remains a supporting companion surface for additional proof artifacts, comparison views, and reviewer context.
 
 ## What it is not
 
@@ -22,6 +25,11 @@ In shipped form, this project is a reviewer-ready facility-side outpatient contr
 - Production-integrated hospital deployment
 
 ## Implemented now
+
+### Primary product surface
+
+- React app: `react-surface`
+- One-click Windows launcher: `Launch React Surface Demo.cmd`
 
 ### Core operating surfaces
 
@@ -36,6 +44,11 @@ In shipped form, this project is a reviewer-ready facility-side outpatient contr
 - `Scenario Lab v0`
 - `Denial Feedback + CDM Governance Monitor`
 - `Revenue Integrity Decision Pack` trigger and markdown export from `Control Room Summary`
+
+### Supporting companion surface
+
+- Streamlit app entrypoint: `app/streamlit_app.py`
+- Role in shipped story: supporting validation/proof context, not the primary product claim
 
 ### Implemented capability layer
 
@@ -64,11 +77,24 @@ In shipped form, this project is a reviewer-ready facility-side outpatient contr
 ## Why this repo is ready to review
 
 - The current repo shows believable facility-side outpatient control logic rather than generic leakage reporting.
+- The React app demonstrates product engineering depth beyond analysis-only output: typed domain modeling, route composition, deterministic computation layers, and reviewer-facing UI communication.
 - Performed activity, expected billable opportunity, actual charge state, and a thin downstream denial-signal layer are visible in current surfaces and artifacts.
 - Current blocker, owner, aging, recoverability, and next action are explicit on the main operating surfaces.
 - Packaged / non-billable / false-positive suppression is visible rather than hidden.
 - Operational prioritization exists without requiring predictive logic.
 - Reviewer-facing proof is already present across browser-visible artifacts, exports, realism materials, and tests, including walkthrough coherence proof, documentation-support trend realism proof, and charge reconciliation trend/scoping realism proof.
+
+## Launch paths
+
+### React (primary)
+
+- One click on Windows: `Launch React Surface Demo.cmd`
+- Terminal fallback: `cd react-surface` then `npm install` and `npm run dev`
+
+### Streamlit (supporting)
+
+- One click on Windows: `Launch Hospital Charge Capture Demo.cmd`
+- Terminal fallback: `python scripts/run_demo.py`
 
 ## Public scope boundary
 
@@ -81,6 +107,7 @@ The public repo centers on the deterministic facility-side outpatient control-ro
 - Stage-specific aging and recoverability
 - Case-level evidence trace
 - Reviewer-facing proof of coherence and realism
+- React-first product interaction layer
 
 ### Shipped but secondary
 
@@ -101,6 +128,7 @@ The public repo centers on the deterministic facility-side outpatient control-ro
 - [success_definition_checklist.md](./success_definition_checklist.md)
 - [deferred_scope_boundary.md](./deferred_scope_boundary.md)
 - [OR walkthrough talk track](./reviewer_walkthrough_pack/or_prebill_hold_talk_track.md)
+- [React screenshot refresh note](./browser_audit/react_surface_lens_screens_2026-05-25.md)
 
 ## Bottom line
 

@@ -88,28 +88,28 @@ export function ExceptionWorklist({
             </p>
             <p className="mt-2 text-sm text-slate-600">{caseItem.currentPrimaryBlocker}</p>
 
-            <dl className="mt-3 grid grid-cols-3 gap-2 text-sm">
+            <div className="mt-3 grid grid-cols-3 gap-2 text-sm">
               <div className="rounded-lg bg-slate-50 p-2">
-                <dt className="text-xs uppercase tracking-wide text-slate-500">At risk</dt>
-                <dd className="font-semibold text-slate-900">
+                <p className="text-xs uppercase tracking-wide text-slate-500">At risk</p>
+                <p className="font-semibold text-slate-900">
                   {formatCurrency(caseItem.dollarsAtRisk)}
-                </dd>
+                </p>
               </div>
               <div className="rounded-lg bg-slate-50 p-2">
-                <dt className="text-xs uppercase tracking-wide text-slate-500">Aging</dt>
-                <dd className="font-semibold text-slate-900">
+                <p className="text-xs uppercase tracking-wide text-slate-500">Aging</p>
+                <p className="font-semibold text-slate-900">
                   {formatNumber(caseItem.agingDays)} days
-                </dd>
+                </p>
               </div>
               <div className="rounded-lg bg-slate-50 p-2">
-                <dt className="text-xs uppercase tracking-wide text-slate-500">
+                <p className="text-xs uppercase tracking-wide text-slate-500">
                   Recoverable now
-                </dt>
-                <dd className="font-semibold text-slate-900">
+                </p>
+                <p className="font-semibold text-slate-900">
                   {formatCurrency(caseItem.dollarsRecoverableNow)}
-                </dd>
+                </p>
               </div>
-            </dl>
+            </div>
           </button>
         )
       })}

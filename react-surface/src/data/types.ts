@@ -76,6 +76,16 @@ export interface InterventionTrackingItem {
   currentMetric: string
   recommendation: 'Hold' | 'Expand' | 'Revise'
   validationNote: string
+  linkedCaseIds: string[]
+  baselineImpact: InterventionImpactSnapshot
+  currentImpact: InterventionImpactSnapshot
+}
+
+export interface InterventionImpactSnapshot {
+  caseCount: number
+  dollarsAtRisk: number
+  recoverableNow: number
+  averageAgingDays: number
 }
 
 export interface GlobalFiltersState {
@@ -84,4 +94,119 @@ export interface GlobalFiltersState {
   queue: QueueName | 'All'
   recoverability: RecoverabilityStatus | 'All'
   search: string
+}
+
+export type ScenarioLeverKey =
+  | 'prebillClearanceRate'
+  | 'correctionTurnaroundDays'
+  | 'routingSpeedDays'
+
+export interface ScenarioLeverConfig {
+  key: ScenarioLeverKey
+  label: string
+  baselineValue: number
+  targetValue: number
+  minValue: number
+  maxValue: number
+  step: number
+  unitLabel: '%' | 'days'
+  deltaLabel: string
+  assumptionNote: string
+}
+
+export interface ScenarioBaselineInput {
+  metric: string
+  valueDisplay: string
+  note: string
+}
+
+export interface ScenarioProjection {
+  projectedRecoverableDollarLift: number
+  projectedBacklogReduction: number
+  projectedSlaImprovementPoints: number
+  ninetyDayImpactEstimate: number
+  implementationEffort: 'Low' | 'Moderate' | 'Moderate-high'
+  baselineWithinSlaRate: number
+  projectedWithinSlaRate: number
+}
+
+export interface ScenarioComputationResult {
+  leverConfigs: ScenarioLeverConfig[]
+  baselineInputs: ScenarioBaselineInput[]
+  projection: ScenarioProjection
+}
+
+export interface DenialSignalEvent {
+  id: string
+  caseId: string
+  denialCategory: string
+  denialReasonGroup: string
+  payerGroup: string
+  denialAmount: number
+  linkedUpstreamIssueDomain: string
+  linkedRootCauseMechanism: string
+  linkedOwnerTeam: string
+  expectedCode: string
+  expectedModifierHint: string
+  cdmExpectedModifier: string
+  revenueCode: string
+  activeFlag: boolean
+  ruleStatus: 'active' | 'stale' | 'review_needed' | 'inactive_reference'
+  defaultUnits: number
+  lastUpdateDatetime: string
+  commonFailureMode: string
+  operationalOwnerHint: string
+  correctionTurnaroundDays: number
+}
+
+export interface DenialSignalPattern {
+  patternId: string
+  denialCategory: string
+  denialReasonGroup: string
+  payerGroup: string
+  denialAmount: number
+  linkedUpstreamIssueDomain: string
+  linkedRootCauseMechanism: string
+  linkedOwnerTeam: string
+  repeatPatternSignal: 'Repeat pattern' | 'Single signal'
+  denialSignalStrength: 'High' | 'Moderate' | 'Low'
+  ownerActionHint: string
+  likelyOwnerPath: string
+  upstreamValidationNote: string
+  whyThisMattersOperationally: string
+}
+
+export interface CdmGovernanceMonitorItem {
+  department: string
+  serviceLine: string
+  expectedCode: string
+  expectedModifier: string
+  defaultUnits: number
+  revenueCode: string
+  activeFlag: boolean
+  ruleStatus: 'active' | 'stale' | 'review_needed' | 'inactive_reference'
+  lastUpdateDatetime: string
+  cdmGovernanceFlag: string
+  suggestedGovernanceAction: string
+  denialSignalRows: number
+  denialAmount: number
+  upstreamValidationNote: string
+}
+
+export interface DenialLinkageDetailRow {
+  field: string
+  value: string
+}
+
+export interface DenialFeedbackCdmMonitorView {
+  denialSignalPatterns: DenialSignalPattern[]
+  cdmGovernanceMonitor: CdmGovernanceMonitorItem[]
+  linkageDetail: DenialLinkageDetailRow[]
+  patternSelectorOptions: string[]
+  defaultSelectedPatternId: string | null
+  denialSignalCount: number
+  denialDollars: number
+  governedPrebillEditAging: number
+  governedRecoverableDollarsStillOpen: number
+  correctionTurnaroundDays: number
 }

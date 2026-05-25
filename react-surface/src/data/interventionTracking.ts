@@ -12,6 +12,19 @@ export const interventionTracking: InterventionTrackingItem[] = [
     recommendation: 'Expand',
     validationNote:
       'Early trend shows fewer >7 day holds after daily coder-prebill huddle.',
+    linkedCaseIds: ['RI-OR-0017', 'RI-OR-0099'],
+    baselineImpact: {
+      caseCount: 3,
+      dollarsAtRisk: 68100,
+      recoverableNow: 51200,
+      averageAgingDays: 11.3,
+    },
+    currentImpact: {
+      caseCount: 2,
+      dollarsAtRisk: 56950,
+      recoverableNow: 51200,
+      averageAgingDays: 10.8,
+    },
   },
   {
     id: 'INT-02',
@@ -24,6 +37,19 @@ export const interventionTracking: InterventionTrackingItem[] = [
     recommendation: 'Hold',
     validationNote:
       'Three-week validation confirms stable event delivery and reduced manual posting.',
+    linkedCaseIds: ['RI-IR-0031', 'RI-IR-0088'],
+    baselineImpact: {
+      caseCount: 4,
+      dollarsAtRisk: 58850,
+      recoverableNow: 45600,
+      averageAgingDays: 9.6,
+    },
+    currentImpact: {
+      caseCount: 2,
+      dollarsAtRisk: 30450,
+      recoverableNow: 30450,
+      averageAgingDays: 8,
+    },
   },
   {
     id: 'INT-03',
@@ -36,6 +62,19 @@ export const interventionTracking: InterventionTrackingItem[] = [
     recommendation: 'Revise',
     validationNote:
       'Improvement is modest; second-hour support templates need tighter adoption.',
+    linkedCaseIds: ['RI-INF-0044', 'RI-INF-0075'],
+    baselineImpact: {
+      caseCount: 2,
+      dollarsAtRisk: 17100,
+      recoverableNow: 11850,
+      averageAgingDays: 17.8,
+    },
+    currentImpact: {
+      caseCount: 2,
+      dollarsAtRisk: 17100,
+      recoverableNow: 9800,
+      averageAgingDays: 17.8,
+    },
   },
   {
     id: 'INT-04',
@@ -48,5 +87,18 @@ export const interventionTracking: InterventionTrackingItem[] = [
     recommendation: 'Revise',
     validationNote:
       'No change yet; implementation work has not started in current cycle.',
+    linkedCaseIds: ['RI-IR-0106', 'RI-OR-0052'],
+    baselineImpact: {
+      caseCount: 2,
+      dollarsAtRisk: 31300,
+      recoverableNow: 18100,
+      averageAgingDays: 16,
+    },
+    currentImpact: {
+      caseCount: 2,
+      dollarsAtRisk: 31300,
+      recoverableNow: 18100,
+      averageAgingDays: 16,
+    },
   },
 ]

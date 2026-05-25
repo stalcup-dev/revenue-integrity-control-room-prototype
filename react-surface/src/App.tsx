@@ -1,11 +1,20 @@
 import {
+  Beaker,
+  CircleAlert,
   ClipboardList,
+  Compass,
   FileClock,
+  FileCheck2,
+  LineChart,
+  Network,
+  Library,
+  Sparkles,
+  ShieldCheck,
   FileSearch,
   LayoutDashboard,
   ShieldAlert,
 } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { Suspense, lazy, useMemo, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { AppShell } from './components/AppShell'
@@ -14,11 +23,78 @@ import { SidebarNav, type SidebarItem } from './components/SidebarNav'
 import { interventionTracking } from './data/interventionTracking'
 import { revenueIntegrityCases } from './data/revenueIntegrityCases'
 import type { GlobalFiltersState, Priority, RevenueIntegrityCase } from './data/types'
-import { ChargeReconciliationPage } from './pages/ChargeReconciliationPage'
-import { ControlRoomSummaryPage } from './pages/ControlRoomSummaryPage'
-import { DocumentationExceptionsPage } from './pages/DocumentationExceptionsPage'
-import { PrebillHoldsPage } from './pages/PrebillHoldsPage'
-import { PlaceholderPage } from './pages/PlaceholderPage'
+import { selectFeaturedStory } from './lib/featuredStory'
+
+const ControlRoomSummaryPage = lazy(() =>
+  import('./pages/ControlRoomSummaryPage').then((module) => ({
+    default: module.ControlRoomSummaryPage,
+  })),
+)
+const ChargeReconciliationPage = lazy(() =>
+  import('./pages/ChargeReconciliationPage').then((module) => ({
+    default: module.ChargeReconciliationPage,
+  })),
+)
+const PrebillHoldsPage = lazy(() =>
+  import('./pages/PrebillHoldsPage').then((module) => ({
+    default: module.PrebillHoldsPage,
+  })),
+)
+const DocumentationExceptionsPage = lazy(() =>
+  import('./pages/DocumentationExceptionsPage').then((module) => ({
+    default: module.DocumentationExceptionsPage,
+  })),
+)
+const ActionTrackerPage = lazy(() =>
+  import('./pages/ActionTrackerPage').then((module) => ({
+    default: module.ActionTrackerPage,
+  })),
+)
+const ScenarioLabPage = lazy(() =>
+  import('./pages/ScenarioLabPage').then((module) => ({
+    default: module.ScenarioLabPage,
+  })),
+)
+const DenialFeedbackCdmMonitorPage = lazy(() =>
+  import('./pages/DenialFeedbackCdmMonitorPage').then((module) => ({
+    default: module.DenialFeedbackCdmMonitorPage,
+  })),
+)
+const DocumentationTrendRealismPage = lazy(() =>
+  import('./pages/DocumentationTrendRealismPage').then((module) => ({
+    default: module.DocumentationTrendRealismPage,
+  })),
+)
+const QueueGovernanceBrowserPage = lazy(() =>
+  import('./pages/QueueGovernanceBrowserPage').then((module) => ({
+    default: module.QueueGovernanceBrowserPage,
+  })),
+)
+const PageStorytellingValidationPage = lazy(() =>
+  import('./pages/PageStorytellingValidationPage').then((module) => ({
+    default: module.PageStorytellingValidationPage,
+  })),
+)
+const TrustDentRemediationPage = lazy(() =>
+  import('./pages/TrustDentRemediationPage').then((module) => ({
+    default: module.TrustDentRemediationPage,
+  })),
+)
+const DecisionPackFreshnessLensPage = lazy(() =>
+  import('./pages/DecisionPackFreshnessLensPage').then((module) => ({
+    default: module.DecisionPackFreshnessLensPage,
+  })),
+)
+const ReviewerProofPackLensPage = lazy(() =>
+  import('./pages/ReviewerProofPackLensPage').then((module) => ({
+    default: module.ReviewerProofPackLensPage,
+  })),
+)
+const ScenarioClaimTighteningLensPage = lazy(() =>
+  import('./pages/ScenarioClaimTighteningLensPage').then((module) => ({
+    default: module.ScenarioClaimTighteningLensPage,
+  })),
+)
 
 const navigationItems: SidebarItem[] = [
   {
@@ -50,7 +126,61 @@ const navigationItems: SidebarItem[] = [
     label: 'Action Tracker',
     path: '/action-tracker',
     icon: ClipboardList,
-    enabled: false,
+    enabled: true,
+  },
+  {
+    label: 'Scenario Lab',
+    path: '/scenario-lab',
+    icon: Beaker,
+    enabled: true,
+  },
+  {
+    label: 'Denial Feedback + CDM Governance',
+    path: '/denial-feedback-cdm-governance',
+    icon: CircleAlert,
+    enabled: true,
+  },
+  {
+    label: 'Documentation Trend Realism',
+    path: '/documentation-trend-realism',
+    icon: LineChart,
+    enabled: true,
+  },
+  {
+    label: 'Queue Governance Browser',
+    path: '/queue-governance-browser',
+    icon: Network,
+    enabled: true,
+  },
+  {
+    label: 'Page Storytelling Validation',
+    path: '/page-storytelling-validation',
+    icon: Compass,
+    enabled: true,
+  },
+  {
+    label: 'Trust Dent Remediation',
+    path: '/trust-dent-remediation',
+    icon: ShieldCheck,
+    enabled: true,
+  },
+  {
+    label: 'Decision Pack Freshness Lens',
+    path: '/decision-pack-freshness-lens',
+    icon: FileCheck2,
+    enabled: true,
+  },
+  {
+    label: 'Reviewer Proof Pack Lens',
+    path: '/reviewer-proof-pack-lens',
+    icon: Library,
+    enabled: true,
+  },
+  {
+    label: 'Scenario Claim-Tightening Lens',
+    path: '/scenario-claim-tightening-lens',
+    icon: Sparkles,
+    enabled: true,
   },
 ]
 
@@ -148,6 +278,8 @@ function App() {
   }, [filters])
 
   const effectiveSelectedCaseId = useMemo(() => {
+    const featured = selectFeaturedStory(filteredCases)
+
     if (filteredCases.length === 0) {
       return null
     }
@@ -159,8 +291,13 @@ function App() {
       return selectedSummaryCaseId
     }
 
-    return filteredCases[0].id
+    return featured?.caseId ?? filteredCases[0].id
   }, [filteredCases, selectedSummaryCaseId])
+
+  const featuredSummaryStory = useMemo(
+    () => selectFeaturedStory(filteredCases),
+    [filteredCases],
+  )
 
   const reconciliationCases = useMemo(
     () => filteredCases.filter((caseItem) => isReconciliationCase(caseItem)),
@@ -364,66 +501,115 @@ function App() {
           />
         }
       >
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ControlRoomSummaryPage
-                filteredCases={filteredCases}
-                selectedCaseId={effectiveSelectedCaseId}
-                onSelectCase={setSelectedSummaryCaseId}
-                interventions={interventionTracking}
-                metrics={metrics}
-              />
-            }
-          />
-          <Route
-            path="/control-room-summary"
-            element={
-              <ControlRoomSummaryPage
-                filteredCases={filteredCases}
-                selectedCaseId={effectiveSelectedCaseId}
-                onSelectCase={setSelectedSummaryCaseId}
-                interventions={interventionTracking}
-                metrics={metrics}
-              />
-            }
-          />
-          <Route
-            path="/charge-reconciliation"
-            element={
-              <ChargeReconciliationPage
-                cases={reconciliationCases}
-                selectedCaseId={effectiveSelectedReconciliationCaseId}
-                onSelectCase={setSelectedReconciliationCaseId}
-                metrics={reconciliationMetrics}
-              />
-            }
-          />
-          <Route
-            path="/prebill-holds"
-            element={
-              <PrebillHoldsPage
-                cases={prebillCases}
-                selectedCaseId={effectiveSelectedPrebillCaseId}
-                onSelectCase={setSelectedPrebillCaseId}
-                metrics={prebillMetrics}
-              />
-            }
-          />
-          <Route
-            path="/documentation-exceptions"
-            element={
-              <DocumentationExceptionsPage
-                cases={documentationCases}
-                selectedCaseId={effectiveSelectedDocumentationCaseId}
-                onSelectCase={setSelectedDocumentationCaseId}
-                metrics={documentationMetrics}
-              />
-            }
-          />
-          <Route path="/action-tracker" element={<PlaceholderPage title="Action Tracker" />} />
-        </Routes>
+        <Suspense
+          fallback={
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 text-sm text-slate-600 shadow-sm">
+              Loading page...
+            </div>
+          }
+        >
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <ControlRoomSummaryPage
+                  filteredCases={filteredCases}
+                  selectedCaseId={effectiveSelectedCaseId}
+                  onSelectCase={setSelectedSummaryCaseId}
+                  interventions={interventionTracking}
+                  metrics={metrics}
+                  featuredStory={featuredSummaryStory}
+                />
+              }
+            />
+            <Route
+              path="/control-room-summary"
+              element={
+                <ControlRoomSummaryPage
+                  filteredCases={filteredCases}
+                  selectedCaseId={effectiveSelectedCaseId}
+                  onSelectCase={setSelectedSummaryCaseId}
+                  interventions={interventionTracking}
+                  metrics={metrics}
+                  featuredStory={featuredSummaryStory}
+                />
+              }
+            />
+            <Route
+              path="/charge-reconciliation"
+              element={
+                <ChargeReconciliationPage
+                  cases={reconciliationCases}
+                  selectedCaseId={effectiveSelectedReconciliationCaseId}
+                  onSelectCase={setSelectedReconciliationCaseId}
+                  metrics={reconciliationMetrics}
+                />
+              }
+            />
+            <Route
+              path="/prebill-holds"
+              element={
+                <PrebillHoldsPage
+                  cases={prebillCases}
+                  selectedCaseId={effectiveSelectedPrebillCaseId}
+                  onSelectCase={setSelectedPrebillCaseId}
+                  metrics={prebillMetrics}
+                />
+              }
+            />
+            <Route
+              path="/documentation-exceptions"
+              element={
+                <DocumentationExceptionsPage
+                  cases={documentationCases}
+                  selectedCaseId={effectiveSelectedDocumentationCaseId}
+                  onSelectCase={setSelectedDocumentationCaseId}
+                  metrics={documentationMetrics}
+                />
+              }
+            />
+            <Route
+              path="/action-tracker"
+              element={<ActionTrackerPage interventions={interventionTracking} cases={filteredCases} />}
+            />
+            <Route
+              path="/scenario-lab"
+              element={<ScenarioLabPage cases={filteredCases} />}
+            />
+            <Route
+              path="/denial-feedback-cdm-governance"
+              element={<DenialFeedbackCdmMonitorPage cases={filteredCases} />}
+            />
+            <Route
+              path="/documentation-trend-realism"
+              element={<DocumentationTrendRealismPage filters={filters} />}
+            />
+            <Route
+              path="/queue-governance-browser"
+              element={<QueueGovernanceBrowserPage cases={filteredCases} />}
+            />
+            <Route
+              path="/page-storytelling-validation"
+              element={<PageStorytellingValidationPage cases={filteredCases} />}
+            />
+            <Route
+              path="/trust-dent-remediation"
+              element={<TrustDentRemediationPage cases={filteredCases} />}
+            />
+            <Route
+              path="/decision-pack-freshness-lens"
+              element={<DecisionPackFreshnessLensPage cases={filteredCases} />}
+            />
+            <Route
+              path="/reviewer-proof-pack-lens"
+              element={<ReviewerProofPackLensPage cases={filteredCases} />}
+            />
+            <Route
+              path="/scenario-claim-tightening-lens"
+              element={<ScenarioClaimTighteningLensPage cases={filteredCases} />}
+            />
+          </Routes>
+        </Suspense>
       </AppShell>
     </BrowserRouter>
   )

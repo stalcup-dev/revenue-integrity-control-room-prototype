@@ -1,7 +1,20 @@
 import type { InterventionTrackingItem } from '../data/types'
+import { formatCurrency, formatNumber } from '../lib/formatters'
 
 interface InterventionCardProps {
   item: InterventionTrackingItem
+  impactSummary?: {
+    affectedCases: number
+    dollarsAtRisk: number
+    recoverableNow: number
+    averageAgingDays: number
+  }
+  impactDelta?: {
+    dollarsAtRisk: number
+    caseCount: number
+  }
+  isSelected?: boolean
+  onViewImpactedCases?: () => void
 }
 
 const recommendationClassName: Record<InterventionTrackingItem['recommendation'], string> = {
@@ -17,9 +30,20 @@ const checkpointClassName: Record<InterventionTrackingItem['checkpointStatus'], 
   'Needs revision': 'text-amber-700',
 }
 
-export function InterventionCard({ item }: InterventionCardProps) {
+export function InterventionCard({
+  item,
+  impactSummary,
+  impactDelta,
+  isSelected = false,
+  onViewImpactedCases,
+}: InterventionCardProps) {
   return (
-    <article className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+    <article
+      className={[
+        'rounded-2xl border bg-white p-4 shadow-sm transition',
+        isSelected ? 'border-indigo-300 ring-1 ring-indigo-200' : 'border-slate-200',
+      ].join(' ')}
+    >
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div>
           <h4 className="text-base font-semibold text-slate-900">{item.title}</h4>
@@ -35,20 +59,20 @@ export function InterventionCard({ item }: InterventionCardProps) {
         </span>
       </div>
 
-      <dl className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
+      <div className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
         <div className="rounded-lg bg-slate-50 p-2">
-          <dt className="text-xs uppercase tracking-[0.1em] text-slate-500">Checkpoint</dt>
-          <dd className={['mt-1 font-semibold', checkpointClassName[item.checkpointStatus]].join(' ')}>
+          <p className="text-xs uppercase tracking-[0.1em] text-slate-500">Checkpoint</p>
+          <p className={['mt-1 font-semibold', checkpointClassName[item.checkpointStatus]].join(' ')}>
             {item.checkpointStatus}
-          </dd>
+          </p>
         </div>
         <div className="rounded-lg bg-slate-50 p-2">
-          <dt className="text-xs uppercase tracking-[0.1em] text-slate-500">
+          <p className="text-xs uppercase tracking-[0.1em] text-slate-500">
             Target completion
-          </dt>
-          <dd className="mt-1 font-semibold text-slate-800">{item.targetCompletionDate}</dd>
+          </p>
+          <p className="mt-1 font-semibold text-slate-800">{item.targetCompletionDate}</p>
         </div>
-      </dl>
+      </div>
 
       <p className="mt-3 text-sm text-slate-700">
         <span className="font-semibold">Baseline:</span> {item.baselineMetric}
@@ -56,7 +80,58 @@ export function InterventionCard({ item }: InterventionCardProps) {
       <p className="mt-1 text-sm text-slate-700">
         <span className="font-semibold">Current:</span> {item.currentMetric}
       </p>
+
+      {impactSummary ? (
+        <div className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
+          <div className="rounded-lg bg-slate-50 p-2">
+            <p className="text-xs uppercase tracking-[0.1em] text-slate-500">Impacted cases</p>
+            <p className="mt-1 font-semibold text-slate-800">
+              {formatNumber(impactSummary.affectedCases)}
+            </p>
+          </div>
+          <div className="rounded-lg bg-slate-50 p-2">
+            <p className="text-xs uppercase tracking-[0.1em] text-slate-500">Dollars at risk</p>
+            <p className="mt-1 font-semibold text-slate-800">
+              {formatCurrency(impactSummary.dollarsAtRisk)}
+            </p>
+          </div>
+          <div className="rounded-lg bg-slate-50 p-2">
+            <p className="text-xs uppercase tracking-[0.1em] text-slate-500">Recoverable now</p>
+            <p className="mt-1 font-semibold text-slate-800">
+              {formatCurrency(impactSummary.recoverableNow)}
+            </p>
+          </div>
+          <div className="rounded-lg bg-slate-50 p-2">
+            <p className="text-xs uppercase tracking-[0.1em] text-slate-500">Average aging</p>
+            <p className="mt-1 font-semibold text-slate-800">
+              {formatNumber(impactSummary.averageAgingDays)} days
+            </p>
+          </div>
+        </div>
+      ) : null}
+
+      {impactDelta ? (
+        <p className="mt-3 text-sm text-slate-700">
+          <span className="font-semibold">Impact delta:</span>{' '}
+          {impactDelta.dollarsAtRisk === 0
+            ? 'No dollar-risk change from baseline.'
+            : `${impactDelta.dollarsAtRisk < 0 ? 'Down' : 'Up'} ${formatCurrency(Math.abs(impactDelta.dollarsAtRisk))} vs baseline`}
+          {` | Cases: ${impactDelta.caseCount === 0 ? 'no change' : impactDelta.caseCount < 0 ? `${Math.abs(impactDelta.caseCount)} fewer` : `${impactDelta.caseCount} more`}`}
+        </p>
+      ) : null}
+
       <p className="mt-3 rounded-lg bg-slate-50 p-3 text-sm text-slate-700">{item.validationNote}</p>
+
+      {onViewImpactedCases ? (
+        <button
+          type="button"
+          onClick={onViewImpactedCases}
+          className="mt-3 rounded-xl border border-indigo-200 bg-indigo-50 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-indigo-700 transition hover:border-indigo-300 hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+          aria-label={`View impacted cases for ${item.title}`}
+        >
+          View impacted cases
+        </button>
+      ) : null}
     </article>
   )
 }

@@ -31,6 +31,7 @@ If a recruiter or hiring manager opens only four links after the root README, us
 | --- | --- |
 | [artifacts/queue_governance_browser_audit.md](./queue_governance_browser_audit.md) | Browser-visible queue, blocker, owner, SLA, recoverability, and selected-case governance proof. |
 | [artifacts/browser_audit/action_tracker_follow_through.md](./browser_audit/action_tracker_follow_through.md) | Action Tracker follow-through is evidence-backed rather than static text. |
+| [artifacts/browser_audit/react_surface_lens_screens_2026-05-25.md](./browser_audit/react_surface_lens_screens_2026-05-25.md) | Fresh React-surface screenshots for reviewer-proof ordering, scenario claim-tightening caveats, and decision-pack freshness framing. |
 | [artifacts/documentation_trend_realism/filter_state_validation.md](./documentation_trend_realism/filter_state_validation.md) | Documentation Support Exceptions behaves like a believable filtered backlog, not a fixed chart. |
 | [artifacts/reconciliation_realism/reconciliation_scope_validation.md](./reconciliation_realism/reconciliation_scope_validation.md) | Charge Reconciliation Monitor behaves believably in broad and filtered slices. |
 | [artifacts/scenario_lab_v0_audit.md](./scenario_lab_v0_audit.md) | Scenario Lab stays thin, deterministic, capped, and secondary to the control-room core. |

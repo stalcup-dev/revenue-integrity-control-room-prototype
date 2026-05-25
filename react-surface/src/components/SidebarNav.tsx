@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import type { LucideIcon } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 
@@ -11,11 +12,12 @@ export interface SidebarItem {
 
 interface SidebarNavProps {
   items: SidebarItem[]
+  filters?: ReactNode
 }
 
-export function SidebarNav({ items }: SidebarNavProps) {
+export function SidebarNav({ items, filters }: SidebarNavProps) {
   return (
-    <div className="flex h-full flex-col bg-slate-950 px-5 pb-6 pt-7 text-slate-100">
+    <div className="flex h-full flex-col overflow-y-auto bg-slate-950 px-5 pb-6 pt-7 text-slate-100">
       <div>
         <p className="text-xs uppercase tracking-[0.26em] text-slate-400">
           Revenue Integrity
@@ -69,7 +71,13 @@ export function SidebarNav({ items }: SidebarNavProps) {
         })}
       </nav>
 
-      <div className="mt-auto rounded-xl border border-slate-800 bg-slate-900/60 p-4 text-xs text-slate-400">
+      {filters ? (
+        <div className="mt-6 rounded-xl border border-slate-700/80 bg-white/95 p-4 text-slate-900 shadow-lg">
+          {filters}
+        </div>
+      ) : null}
+
+      <div className="mt-6 rounded-xl border border-slate-800 bg-slate-900/60 p-4 text-xs text-slate-400">
         <p className="font-semibold uppercase tracking-[0.14em] text-slate-300">
           V1 Scope
         </p>

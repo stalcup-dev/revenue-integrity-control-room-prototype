@@ -112,25 +112,118 @@ Use [case_study.md](./case_study.md) for the full narrative. The screenshots bel
 
 ### React App (Primary Product Surface)
 
-<p align="center">
-  <a href="artifacts/browser_audit/react_control_room_summary_2026-05-25.png"><img src="artifacts/browser_audit/react_control_room_summary_2026-05-25.png" alt="React Control Room Summary main product shell" width="48%"></a>
-  <a href="artifacts/browser_audit/react_reviewer_proof_pack_lens_2026-05-25.png"><img src="artifacts/browser_audit/react_reviewer_proof_pack_lens_2026-05-25.png" alt="React Reviewer Proof Pack Lens showing core-first proof ordering" width="48%"></a>
-</p>
+Fresh React captures (2026-05-25 refresh) from the running app shell after moving Global Filters into the left panel under navigation sections, now exported as full-page screenshots to preserve much more vertical context.
 
-<p align="center">
-  <a href="artifacts/browser_audit/react_scenario_claim_tightening_lens_2026-05-25.png"><img src="artifacts/browser_audit/react_scenario_claim_tightening_lens_2026-05-25.png" alt="React Scenario Claim-Tightening Lens showing claim-to-proof caveat mapping" width="32%"></a>
-  <a href="artifacts/browser_audit/react_decision_pack_freshness_lens_2026-05-25.png"><img src="artifacts/browser_audit/react_decision_pack_freshness_lens_2026-05-25.png" alt="React Decision Pack Freshness Lens showing snapshot and caveat framing" width="32%"></a>
-  <a href="artifacts/browser_audit/react_surface_lens_screens_2026-05-25.md"><img src="artifacts/browser_audit/react_control_room_summary_2026-05-25.png" alt="React screenshot pack and capture note" width="32%"></a>
-</p>
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="artifacts/browser_audit/react_control_room_summary_fullpage_department_pressure_bars_2026-05-25_refresh_v12.png">
+        <img src="artifacts/browser_audit/react_control_room_summary_fullpage_department_pressure_bars_2026-05-25_refresh_v12.png" alt="React Control Room Summary full-page capture with Department Pressure View bars visible" width="100%">
+      </a>
+      <p><strong>Control Room Summary + Department Pressure View</strong><br>Full-page capture with Department Pressure bar chart clearly visible.</p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="artifacts/browser_audit/react_charge_reconciliation_2026-05-25_refresh_v9_fullpage.png">
+        <img src="artifacts/browser_audit/react_charge_reconciliation_2026-05-25_refresh_v9_fullpage.png" alt="React Charge Reconciliation monitor route" width="100%">
+      </a>
+      <p><strong>Charge Reconciliation</strong><br>Workflow pressure from charge capture through coding and rebill stages.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="artifacts/browser_audit/react_prebill_holds_2026-05-25_refresh_v9_fullpage.png">
+        <img src="artifacts/browser_audit/react_prebill_holds_2026-05-25_refresh_v9_fullpage.png" alt="React Prebill Holds route" width="100%">
+      </a>
+      <p><strong>Prebill Holds</strong><br>Prebill hold queue view for intervention before final bill state.</p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="artifacts/browser_audit/react_documentation_exceptions_2026-05-25_refresh_v9_fullpage.png">
+        <img src="artifacts/browser_audit/react_documentation_exceptions_2026-05-25_refresh_v9_fullpage.png" alt="React Documentation Exceptions route" width="100%">
+      </a>
+      <p><strong>Documentation Exceptions</strong><br>Unsupported-documentation pressure and owner accountability lane.</p>
+    </td>
+  </tr>
+</table>
 
-<p align="center"><em>Primary product screenshots: React control-room shell, reviewer-proof ordering, scenario claim tightening, and decision-pack freshness framing.</em></p>
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="artifacts/browser_audit/react_action_tracker_2026-05-25_refresh_v9_fullpage.png">
+        <img src="artifacts/browser_audit/react_action_tracker_2026-05-25_refresh_v9_fullpage.png" alt="React Action Tracker route" width="100%">
+      </a>
+      <p><strong>Action Tracker</strong><br>Intervention follow-through, hold/expand/revise framing, and queue impact context.</p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="artifacts/browser_audit/react_queue_governance_browser_2026-05-25_refresh_v9_fullpage.png">
+        <img src="artifacts/browser_audit/react_queue_governance_browser_2026-05-25_refresh_v9_fullpage.png" alt="React Queue Governance Browser route" width="100%">
+      </a>
+      <p><strong>Queue Governance Browser</strong><br>SLA breach concentration and queue-stage ownership exposure.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="artifacts/browser_audit/react_reviewer_proof_pack_lens_2026-05-25_refresh_v9_fullpage.png">
+        <img src="artifacts/browser_audit/react_reviewer_proof_pack_lens_2026-05-25_refresh_v9_fullpage.png" alt="React Reviewer Proof Pack Lens route" width="100%">
+      </a>
+      <p><strong>Reviewer Proof Pack Lens</strong><br>Core-proof-first ordering with supporting evidence kept explicit.</p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="artifacts/browser_audit/react_decision_pack_freshness_lens_2026-05-25_refresh_v9_fullpage.png">
+        <img src="artifacts/browser_audit/react_decision_pack_freshness_lens_2026-05-25_refresh_v9_fullpage.png" alt="React Decision Pack Freshness Lens route" width="100%">
+      </a>
+      <p><strong>Decision Pack Freshness Lens</strong><br>Snapshot-date and validation-state framing for reviewer-safe reading.</p>
+    </td>
+  </tr>
+</table>
 
-React screenshot captions:
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="artifacts/browser_audit/react_scenario_lab_2026-05-25_refresh_v9_fullpage.png">
+        <img src="artifacts/browser_audit/react_scenario_lab_2026-05-25_refresh_v9_fullpage.png" alt="React Scenario Lab route" width="100%">
+      </a>
+      <p><strong>Scenario Lab</strong><br>Bounded what-if lever controls for backlog, SLA, and recoverability framing.</p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="artifacts/browser_audit/react_denial_feedback_cdm_governance_2026-05-25_refresh_v9_fullpage.png">
+        <img src="artifacts/browser_audit/react_denial_feedback_cdm_governance_2026-05-25_refresh_v9_fullpage.png" alt="React Denial Feedback and CDM Governance route" width="100%">
+      </a>
+      <p><strong>Denial Feedback + CDM Governance</strong><br>Downstream denial evidence mapped to upstream governance actions.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="artifacts/browser_audit/react_documentation_trend_realism_2026-05-25_refresh_v9_fullpage.png">
+        <img src="artifacts/browser_audit/react_documentation_trend_realism_2026-05-25_refresh_v9_fullpage.png" alt="React Documentation Trend Realism route" width="100%">
+      </a>
+      <p><strong>Documentation Trend Realism</strong><br>Queue-history realism checks with backlog and dollars alignment.</p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="artifacts/browser_audit/react_trust_dent_remediation_2026-05-25_refresh_v9_fullpage.png">
+        <img src="artifacts/browser_audit/react_trust_dent_remediation_2026-05-25_refresh_v9_fullpage.png" alt="React Trust Dent Remediation route" width="100%">
+      </a>
+      <p><strong>Trust Dent Remediation</strong><br>Reviewer-trust remediation ledger with explicit no-build-boundary fixes.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="artifacts/browser_audit/react_scenario_claim_tightening_lens_2026-05-25_refresh_v9_fullpage.png">
+        <img src="artifacts/browser_audit/react_scenario_claim_tightening_lens_2026-05-25_refresh_v9_fullpage.png" alt="React Scenario Claim-Tightening Lens route" width="100%">
+      </a>
+      <p><strong>Scenario Claim-Tightening Lens</strong><br>Claim risk posture with caveat-safe reviewer wording.</p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="artifacts/browser_audit/react_control_room_summary_2026-05-25_refresh_v9_fullpage.png">
+        <img src="artifacts/browser_audit/react_control_room_summary_2026-05-25_refresh_v9_fullpage.png" alt="React Control Room Summary route" width="100%">
+      </a>
+      <p><strong>Control Room Summary</strong><br>Deterministic exception prioritization with owner-routed action framing.</p>
+    </td>
+  </tr>
+</table>
 
-- Control Room Summary: app-shell quality, persistent global filters, and deterministic queue framing.
-- Reviewer Proof Pack Lens: core-proof-first ordering and explicit supporting evidence tiers.
-- Scenario Claim-Tightening Lens: bounded claim wording tied to proof anchors and caveats.
-- Decision Pack Freshness Lens: explicit snapshot-date framing and caveat-safe packaging language.
+<p align="center"><em>Primary product screenshots: expanded React route coverage with full-page framing, plus explicit proof that Global Filters now live in the left sidebar.</em></p>
+
+Capture notes: [React screenshot refresh note](./artifacts/browser_audit/react_surface_lens_screens_2026-05-25.md)
 
 ### Streamlit Dashboard Surfaces (Supporting Proof)
 
@@ -232,10 +325,20 @@ The [proof index](./artifacts/proof_index.md) links out to the realism materials
 
 Strongest browser-visible screenshots:
 
-- [React control-room summary shell](./artifacts/browser_audit/react_control_room_summary_2026-05-25.png)
-- [React Reviewer Proof Pack Lens](./artifacts/browser_audit/react_reviewer_proof_pack_lens_2026-05-25.png)
-- [React Scenario Claim-Tightening Lens](./artifacts/browser_audit/react_scenario_claim_tightening_lens_2026-05-25.png)
-- [React Decision Pack Freshness Lens](./artifacts/browser_audit/react_decision_pack_freshness_lens_2026-05-25.png)
+- [React sidebar Global Filters placement (refresh)](./artifacts/browser_audit/react_sidebar_global_filters_2026-05-25_refresh_v5_fullpage.png)
+- [React control-room summary shell (refresh)](./artifacts/browser_audit/react_control_room_summary_2026-05-25_refresh_v9_fullpage.png)
+- [React Charge Reconciliation (refresh)](./artifacts/browser_audit/react_charge_reconciliation_2026-05-25_refresh_v9_fullpage.png)
+- [React Prebill Holds (refresh)](./artifacts/browser_audit/react_prebill_holds_2026-05-25_refresh_v9_fullpage.png)
+- [React Documentation Exceptions (refresh)](./artifacts/browser_audit/react_documentation_exceptions_2026-05-25_refresh_v9_fullpage.png)
+- [React Action Tracker (refresh)](./artifacts/browser_audit/react_action_tracker_2026-05-25_refresh_v9_fullpage.png)
+- [React Scenario Lab (refresh)](./artifacts/browser_audit/react_scenario_lab_2026-05-25_refresh_v9_fullpage.png)
+- [React Denial Feedback + CDM Governance (refresh)](./artifacts/browser_audit/react_denial_feedback_cdm_governance_2026-05-25_refresh_v9_fullpage.png)
+- [React Documentation Trend Realism (refresh)](./artifacts/browser_audit/react_documentation_trend_realism_2026-05-25_refresh_v9_fullpage.png)
+- [React Queue Governance Browser (refresh)](./artifacts/browser_audit/react_queue_governance_browser_2026-05-25_refresh_v9_fullpage.png)
+- [React Trust Dent Remediation (refresh)](./artifacts/browser_audit/react_trust_dent_remediation_2026-05-25_refresh_v9_fullpage.png)
+- [React Reviewer Proof Pack Lens (refresh)](./artifacts/browser_audit/react_reviewer_proof_pack_lens_2026-05-25_refresh_v9_fullpage.png)
+- [React Scenario Claim-Tightening Lens (refresh)](./artifacts/browser_audit/react_scenario_claim_tightening_lens_2026-05-25_refresh_v9_fullpage.png)
+- [React Decision Pack Freshness Lens (refresh)](./artifacts/browser_audit/react_decision_pack_freshness_lens_2026-05-25_refresh_v9_fullpage.png)
 - [React screenshot refresh note](./artifacts/browser_audit/react_surface_lens_screens_2026-05-25.md)
 - [Summary featured deterministic story](./artifacts/reviewer_walkthrough_pack/summary_featured_story.png)
 - [Action Tracker work view](./artifacts/page_storytelling_validation/action_tracker_after.png)

@@ -492,12 +492,16 @@ function App() {
   return (
     <BrowserRouter>
       <AppShell
-        sidebar={<SidebarNav items={navigationItems} />}
-        filters={
-          <GlobalFilters
-            filters={filters}
-            options={filterOptions}
-            onChange={setFilters}
+        sidebar={
+          <SidebarNav
+            items={navigationItems}
+            filters={
+              <GlobalFilters
+                filters={filters}
+                options={filterOptions}
+                onChange={setFilters}
+              />
+            }
           />
         }
       >
